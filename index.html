@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CAMBIAR: Reemplaza "Mi Canal de YouTube" con el nombre de tu canal -->
-    <title>Mi Canal de YouTube</title>
+    <title>XGTROLLBGPROPVP</title>
     <style>
         * {
             margin: 0;
@@ -14,14 +13,12 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            /* FONDO AZUL: Puedes cambiar el color azul aquí */
             background-color: #1a1a2e;
             background: linear-gradient(135deg, #0f3460 0%, #16213e 50%, #0f3460 100%);
             color: #fff;
             min-height: 100vh;
         }
 
-        /* Barra de navegación superior */
         nav {
             background-color: rgba(0, 0, 0, 0.7);
             padding: 15px 0;
@@ -64,7 +61,7 @@
             padding: 40px 20px;
         }
 
-        /* SECCIÓN DE ENCABEZADO / BANNER */
+        /* BANNER */
         .banner {
             text-align: center;
             margin-bottom: 50px;
@@ -75,7 +72,6 @@
         }
 
         .banner h1 {
-            /* CAMBIAR: Aquí va el nombre de tu canal */
             font-size: 3em;
             margin-bottom: 10px;
             color: #e94560;
@@ -83,13 +79,12 @@
         }
 
         .banner p {
-            /* CAMBIAR: Aquí va el eslogan o frase corta de tu canal */
             font-size: 1.3em;
             color: #a8dadc;
             font-style: italic;
         }
 
-        /* SECCIÓN DE BIOGRAFÍA */
+        /* BIOGRAFÍA */
         .biografia-section {
             background-color: rgba(255, 255, 255, 0.05);
             padding: 30px;
@@ -159,7 +154,7 @@
             display: block;
         }
 
-        /* SECCIÓN DE REDES SOCIALES */
+        /* REDES SOCIALES */
         .redes-sociales {
             display: flex;
             gap: 20px;
@@ -185,7 +180,7 @@
             box-shadow: 0 5px 15px rgba(233, 69, 96, 0.4);
         }
 
-        /* SECCIÓN DE VIDEOS */
+        /* VIDEOS */
         .videos-section {
             margin-bottom: 50px;
         }
@@ -199,13 +194,11 @@
             padding-bottom: 10px;
         }
 
-        /* GRID DE VIDEOS */
         .videos-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
         }
-
 
         .video-card {
             background-color: rgba(255, 255, 255, 0.05);
@@ -257,10 +250,263 @@
             line-height: 1.5;
         }
 
-        /* Aumentar tamaño del enlace con id 'messi' en 90% */
         #messi {
             font-size: 190%;
             color: #fff;
+        }
+
+        /* =============================================
+           SECCIÓN DE JUEGOS
+        ============================================= */
+        .juegos-section {
+            margin-bottom: 50px;
+        }
+
+        .juegos-section > h2 {
+            color: #e94560;
+            font-size: 2em;
+            margin-bottom: 10px;
+            text-align: center;
+            border-bottom: 2px solid #e94560;
+            padding-bottom: 10px;
+        }
+
+        .juegos-section > .juegos-subtitulo {
+            text-align: center;
+            color: #a8dadc;
+            margin-bottom: 40px;
+            font-size: 1em;
+        }
+
+        /* Tabs de celular / computadora */
+        .juegos-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            margin-bottom: 35px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid #e94560;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 14px 20px;
+            background: rgba(255,255,255,0.05);
+            color: #aaa;
+            border: none;
+            cursor: pointer;
+            font-size: 1.05em;
+            font-weight: bold;
+            font-family: 'Arial', sans-serif;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .tab-btn:first-child {
+            border-right: 1px solid rgba(233, 69, 96, 0.4);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, rgba(233, 69, 96, 0.4), rgba(233, 69, 96, 0.2));
+            color: #fff;
+            text-shadow: 0 0 8px rgba(233,69,96,0.7);
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: rgba(233, 69, 96, 0.15);
+            color: #ddd;
+        }
+
+        /* Panel de juegos */
+        .juegos-panel {
+            display: none;
+        }
+
+        .juegos-panel.active {
+            display: block;
+        }
+
+        /* Encabezado del panel */
+        .panel-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding: 16px 22px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.04);
+            border-left: 5px solid;
+        }
+
+        .panel-header.celular {
+            border-left-color: #00c9a7;
+        }
+
+        .panel-header.computadora {
+            border-left-color: #3498db;
+        }
+
+        .panel-header .panel-icon {
+            font-size: 2.2em;
+        }
+
+        .panel-header .panel-info h3 {
+            font-size: 1.4em;
+            margin-bottom: 4px;
+        }
+
+        .panel-header.celular .panel-info h3 {
+            color: #00c9a7;
+        }
+
+        .panel-header.computadora .panel-info h3 {
+            color: #3498db;
+        }
+
+        .panel-header .panel-info p {
+            color: #aaa;
+            font-size: 0.9em;
+        }
+
+        /* Grid de juegos */
+        .juegos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 22px;
+        }
+
+        .juego-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 14px;
+            overflow: hidden;
+            border: 2px solid rgba(233, 69, 96, 0.25);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .juego-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        /* Colores de hover distintos por tipo */
+        .juegos-panel#celular .juego-card:hover {
+            border-color: #00c9a7;
+            box-shadow: 0 10px 30px rgba(0, 201, 167, 0.25);
+        }
+
+        .juegos-panel#computadora .juego-card:hover {
+            border-color: #3498db;
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.25);
+        }
+
+        .juego-thumb {
+            width: 100%;
+            height: 160px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            text-decoration: none;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        /* Gradientes distintos para celular y PC */
+        .juegos-panel#celular .juego-thumb {
+            background: linear-gradient(135deg, #00c9a7, #008b74);
+        }
+
+        .juegos-panel#celular .juego-thumb:hover {
+            background: linear-gradient(135deg, #00a88a, #006b58);
+        }
+
+        .juegos-panel#computadora .juego-thumb {
+            background: linear-gradient(135deg, #3498db, #1a6fa3);
+        }
+
+        .juegos-panel#computadora .juego-thumb:hover {
+            background: linear-gradient(135deg, #2980b9, #14578a);
+        }
+
+        .juego-thumb .play-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.25);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.45em;
+            font-weight: bold;
+            letter-spacing: 1px;
+            gap: 6px;
+        }
+
+        .juego-thumb:hover .play-overlay {
+            opacity: 1;
+        }
+
+        .play-overlay .play-icon {
+            font-size: 2.2em;
+        }
+
+        .juego-info {
+            padding: 15px 16px;
+        }
+
+        .juego-nombre {
+            font-size: 1.05em;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        .juegos-panel#celular .juego-nombre {
+            color: #00c9a7;
+        }
+
+        .juegos-panel#computadora .juego-nombre {
+            color: #3498db;
+        }
+
+        .juego-desc {
+            font-size: 0.9em;
+            color: #aaa;
+            line-height: 1.5;
+        }
+
+        .juego-badge {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        .juegos-panel#celular .juego-badge {
+            background: rgba(0, 201, 167, 0.15);
+            color: #00c9a7;
+            border: 1px solid rgba(0, 201, 167, 0.3);
+        }
+
+        .juegos-panel#computadora .juego-badge {
+            background: rgba(52, 152, 219, 0.15);
+            color: #3498db;
+            border: 1px solid rgba(52, 152, 219, 0.3);
         }
 
         /* FOOTER */
@@ -286,40 +532,46 @@
                 display: none;
             }
 
-            .videos-grid {
+            .videos-grid,
+            .juegos-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .juegos-tabs {
+                max-width: 100%;
             }
         }
     </style>
 </head>
 <body>
+
     <!-- BARRA DE NAVEGACIÓN -->
     <nav>
         <div class="nav-content">
-            <div class="logo">▶ xgtrollbgpro </div>
+            <div class="logo">▶ xgtrollbgpro</div>
             <div class="nav-links">
                 <a href="#inicio">Inicio</a>
                 <a href="#biografia">Biografía</a>
                 <a href="#videos">Videos</a>
+                <a href="#juegos">Juegos</a>
                 <a href="#contacto">Contacto</a>
             </div>
         </div>
     </nav>
 
     <div class="container">
-        <!-- BANNER / ENCABEZADO -->
+
+        <!-- BANNER -->
         <div class="banner" id="inicio">
             <h1>🎬 XGTROLLBGPROPVP 🎬</h1>
-            <!-- CAMBIAR: Reemplaza esto con tu eslogan o descripción corta -->
             <p>"Muy buenas gente que tal estamos"</p>
         </div>
 
-        <!-- SECCIÓN DE BIOGRAFÍA -->
+        <!-- BIOGRAFÍA -->
         <div class="biografia-section" id="biografia">
             <h2>Sobre Mí</h2>
             <div class="biografia-content">
                 <div class="bio-texto">
-                    <!-- muy buenas gente que tal estamos -->
                     <p>
                         ¡Hola! Soy Xgtroll. Bienvenido a mi canal donde compartimos de cosas xd.
                     </p>
@@ -331,18 +583,11 @@
                         Llevo 2 años creando contenido y me encanta ver cómo mis seguidores crecen cada día. 
                         Si quieres acompañarme en este viaje, ¡no olvides suscribirte!
                     </p>
-
-                    <!-- REDES SOCIALES: CAMBIAR LOS ENLACES -->
                     <div class="redes-sociales">
-                        <!-- CAMBIAR: Reemplaza los # con tus enlaces reales -->
                         <a href="https://www.youtube.com/@xgtroll" target="_blank" class="red-social">🎬 YouTube</a>
-                        
                     </div>
                 </div>
-
                 <div class="bio-imagen">
-                    <!-- CAMBIAR: Reemplaza esto con la URL de tu foto de perfil -->
-                    <!-- Ejemplo: <img src="https://link-a-tu-foto.jpg" alt="Tu foto"> -->
                     <div class="imagen-placeholder-bio">
                         <img src="messi.jpg" alt="messi">
                     </div>
@@ -350,74 +595,47 @@
             </div>
         </div>
 
-        <!-- SECCIÓN DE VIDEOS DESTACADOS -->
+        <!-- VIDEOS DESTACADOS -->
         <div class="videos-section" id="videos">
             <h2>📹 Mis Videos Destacados</h2>
-
             <div class="videos-grid">
-                <!-- VIDEO 1 -->
                 <div class="video-card">
-                    <!-- CAMBIAR: Reemplaza # con el link del video de YouTube -->
-                    <a href="https://youtu.be/K9QEw4YSwks?si=qeHbX6j7EJb2l3yq" target="_blank" class="video-thumbnail">
-                        ▶ video top
-                    </a>
+                    <a href="https://youtu.be/K9QEw4YSwks?si=qeHbX6j7EJb2l3yq" target="_blank" class="video-thumbnail">▶ video top</a>
                     <div class="video-info">
-                        <!-- CAMBIAR: Título del video -->
                         <div class="video-titulo">la copia de benja calero</div>
-                        <!-- CAMBIAR: Descripción del video -->
                         <div class="video-descripcion">una fuerte polemica ataca a benito el perezoso</div>
                     </div>
                 </div>
-
-                <!-- VIDEO 2 -->
                 <div class="video-card">
-                    <a href="https://youtu.be/gTis41ZOGWw?si=mwbQDNLppRrcuh2X" target="_blank" class="video-thumbnail">
-                        ▶ bed wars 
-                    </a>
+                    <a href="https://youtu.be/gTis41ZOGWw?si=mwbQDNLppRrcuh2X" target="_blank" class="video-thumbnail">▶ bed wars</a>
                     <div class="video-info">
                         <div class="video-titulo">jugando bed wars con un amigo</div>
                         <div class="video-descripcion">juego divertido de bed wars con un amigo</div>
                     </div>
                 </div>
-
-                <!-- VIDEO 3 -->
                 <div class="video-card">
-                    <a href="https://youtu.be/3FGcMBmuFBM?si=ECT9xqKjvKECKKb5" target="_blank" class="video-thumbnail">
-                        ▶  autos among us
-                    </a>
+                    <a href="https://youtu.be/3FGcMBmuFBM?si=ECT9xqKjvKECKKb5" target="_blank" class="video-thumbnail">▶ autos among us</a>
                     <div class="video-info">
                         <div class="video-titulo">autos amongus</div>
                         <div class="video-descripcion">juego divertido de autos among us</div>
                     </div>
                 </div>
-
-                <!-- VIDEO 4 -->
                 <div class="video-card">
-                    <a href="https://youtu.be/hiPgWingHZU?si=ng1ENBh6FdTA-pW1" target="_blank" class="video-thumbnail">
-                        ▶ botlle flip
-                    </a>
+                    <a href="https://youtu.be/hiPgWingHZU?si=ng1ENBh6FdTA-pW1" target="_blank" class="video-thumbnail">▶ botlle flip</a>
                     <div class="video-info">
                         <div class="video-titulo">botlle flip</div>
                         <div class="video-descripcion">juego divertido de botlle flip con mi hermana</div>
                     </div>
                 </div>
-
-                <!-- VIDEO 5 -->
                 <div class="video-card">
-                    <a href="https://youtu.be/DvARKPTs-iU?si=A4Gs8Y7LTGinr_AX" target="_blank" class="video-thumbnail">
-                        ▶ squid game con juguetes 
-                    </a>
+                    <a href="https://youtu.be/DvARKPTs-iU?si=A4Gs8Y7LTGinr_AX" target="_blank" class="video-thumbnail">▶ squid game con juguetes</a>
                     <div class="video-info">
-                        <div class="video-titulo">juego del calamar con juguetes </div>
-                        <div class="video-descripcion">juego divertido de juego del calamar con juguetes </div>
+                        <div class="video-titulo">juego del calamar con juguetes</div>
+                        <div class="video-descripcion">juego divertido de juego del calamar con juguetes</div>
                     </div>
                 </div>
-
-                <!-- VIDEO 6 -->
                 <div class="video-card">
-                    <a href="https://youtu.be/8WVD5mKnE6U?si=J7_zPxjQg2z0mcR_" target="_blank" class="video-thumbnail">
-                        ▶ uff cine
-                    </a>
+                    <a href="https://youtu.be/8WVD5mKnE6U?si=J7_zPxjQg2z0mcR_" target="_blank" class="video-thumbnail">▶ uff cine</a>
                     <div class="video-info">
                         <div class="video-titulo">jugamos con agusto pro al bed wars</div>
                         <div class="video-descripcion">cine</div>
@@ -425,7 +643,247 @@
                 </div>
             </div>
         </div>
-    </div>
+
+        <!-- =============================================
+             SECCIÓN DE JUEGOS
+        ============================================= -->
+        <div class="juegos-section" id="juegos">
+            <h2>🎮 Juegos Recomendados</h2>
+            <p class="juegos-subtitulo">apks de juegos — elegí tu plataforma</p>
+
+            <!-- TABS -->
+            <div class="juegos-tabs">
+                <button class="tab-btn active" onclick="switchTab('celular')">
+                    📱 Celular
+                </button>
+                <button class="tab-btn" onclick="switchTab('computadora')">
+                    💻 Computadora
+                </button>
+            </div>
+
+            <!-- PANEL CELULAR -->
+            <div class="juegos-panel active" id="celular">
+                <div class="panel-header celular">
+                    <span class="panel-icon">📱</span>
+                    <div class="panel-info">
+                        <h3>Juegos para Celular</h3>
+                        <p> apk de juegos de paga, grais para celular</p>
+                    </div>
+                </div>
+                <div class="juegos-grid">
+
+                    <!-- JUEGO CELULAR 1 — CAMBIAR ENLACE, NOMBRE Y DESCRIPCIÓN -->
+                    <div class="juego-card">
+                        <a href="https://www.mediafire.com/file/35qkvorp1lunwxy/Five_Nights_at_Freddy%25C2%25B4s_4.apk/file" target="_blank" class="juego-thumb">
+                            🎮
+                            <div class="play-overlay">
+                                <span class="play-icon">▶</span>
+                                <span>JUGAR</span>
+                            </div>
+                        </a>
+                        <div class="juego-info">
+                            <div class="juego-nombre">fnaf 4</div>
+                            <div class="juego-desc">link de descarga del fnaf 4</div>
+                            <span class="juego-badge">📱 Android / iOS</span>
+                        </div>
+                    </div>
+
+                    <!-- JUEGO CELULAR 2 -->
+                    <div class="juego-card">
+                        <a href="https://www.mediafire.com/file/ol036s0qe653zj4/FNaF_World_en_espan%25CC%2583ol.apk/file?dkey=ffzfvlonzuw&r=1251" target="_blank" class="juego-thumb">
+                            🕹️
+                            <div class="play-overlay">
+                                <span class="play-icon">▶</span>
+                                <span>JUGAR</span>
+                            </div>
+                        </a>
+                        <div class="juego-info">
+                            <div class="juego-nombre">fnaf world</div>
+                            <div class="juego-desc">link de descarga del fnaf world</div>
+                            <span class="juego-badge">📱 Android / iOS</span>
+                        </div>
+                    </div>
+
+                    <!-- JUEGO CELULAR 3 -->
+                    <div class="juego-card">
+                        <a href="https://www.mediafire.com/file/iavfl8q2u10xw7o/Five_Nights_at_Freddy%25C2%25B4s_3_HD.apk/file" target="_blank" class="juego-thumb">
+                            🏆
+                            <div class="play-overlay">
+                                <span class="play-icon">▶</span>
+                                <span>JUGAR</span>
+                            </div>
+                        </a>
+                        <div class="juego-info">
+                            <div class="juego-nombre">fnaf 3</div>
+                            <div class="juego-desc">link de descarga del fnaf 3</div>
+                            <span class="juego-badge">📱 Android / iOS</span>
+                        </div>
+                    </div>
+
+                    <!-- JUEGO CELULAR 4 -->
+                    <div class="juego-card">
+                        <a href="https://pojavlauncher-minecraft-java-edition-for-android.uptodown.com/android/descargar" target="_blank" class="juego-thumb">
+                            ⚔️
+                            <div class="play-overlay">
+                                <span class="play-icon">▶</span>
+                                <span>JUGAR</span>
+                            </div>
+                        </a>
+                        <div class="juego-info">
+                            <div class="juego-nombre">PojavLauncher</div>
+                            <div class="juego-desc">Link de descarga de PojavLauncher para Minecraft Java Edition en Android.</div>
+                            <span class="juego-badge">📱 Android / iOS</span>
+                        </div>
+                    </div>
+
+                    <!-- JUEGO CELULAR 5 -->
+                    <div class="juego-card">
+                        <a href="https://www.mediafire.com/file/7nx4ofjdyectnun/Five_Nights_at_Freddy%2527s_2_HD.apk/file" target="_blank" class="juego-thumb">
+                            🚀
+                            <div class="play-overlay">
+                                <span class="play-icon">▶</span>
+                                <span>JUGAR</span>
+                            </div>
+                        </a>
+                        <div class="juego-info">
+                            <div class="juego-nombre">fnaf 2</div>
+                            <div class="juego-desc">link de descarga del fnaf 2</div>
+                            <span class="juego-badge">📱 Android / iOS</span>
+                        </div>
+                    </div>
+
+                    <!-- JUEGO CELULAR 6 -->
+                    <div class="juego-card">
+                        <a href="https://www.mediafire.com/file/2rr984ezzr6goik/Five_Nights_at_Freddy%25C2%25B4s_4_Halloween_Edition.apk/file" target="_blank" class="juego-thumb">
+                            ⚡
+                            <div class="play-overlay">
+                                <span class="play-icon">▶</span>
+                                <span>JUGAR</span>
+                            </div>
+                        </a>
+                        <div class="juego-info">
+                            <div class="juego-nombre">fnaf 4 halloween</div>
+                            <div class="juego-desc">link de descarga del fnaf 4 halloween</div>
+                            <span class="juego-badge">📱 Android / iOS</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div><!-- fin panel celular -->
+
+            <!-- PANEL COMPUTADORA -->
+            <div class="juegos-panel" id="computadora">
+                <div class="panel-header computadora">
+                    <span class="panel-icon">💻</span>
+                    <div class="panel-info">
+                        <h3>Juegos para Computadora</h3>
+                        <p>Los mejores juegos para jugar desde tu PC</p>
+                    </div>
+                </div>
+                <div class="juegos-grid">
+
+                    <!-- JUEGO PC 1 — CAMBIAR ENLACE, NOMBRE Y DESCRIPCIÓN -->
+                    <div class="juego-card">
+                        <a href="#" target="_blank" class="juego-thumb">
+                            🖥️
+                            <div class="play-overlay">
+                                <span class="play-icon">▶</span>
+                                <span>JUGAR</span>
+                            </div>
+                        </a>
+                        <div class="juego-info">
+                            <div class="juego-nombre">Nombre del juego 1</div>
+                            <div class="juego-desc">Descripción corta del juego. Podés cambiarlo por lo que quieras.</div>
+                            <span class="juego-badge">💻 PC / Windows</span>
+                        </div>
+                    </div>
+
+                    <!-- JUEGO PC 2 -->
+                    <div class="juego-card">
+                        <a href="#" target="_blank" class="juego-thumb">
+                            🎯
+                            <div class="play-overlay">
+                                <span class="play-icon">▶</span>
+                                <span>JUGAR</span>
+                            </div>
+                        </a>
+                        <div class="juego-info">
+                            <div class="juego-nombre">Nombre del juego 2</div>
+                            <div class="juego-desc">Descripción corta del juego. Podés cambiarlo por lo que quieras.</div>
+                            <span class="juego-badge">💻 PC / Windows</span>
+                        </div>
+                    </div>
+
+                    <!-- JUEGO PC 3 -->
+                    <div class="juego-card">
+                        <a href="#" target="_blank" class="juego-thumb">
+                            🧱
+                            <div class="play-overlay">
+                                <span class="play-icon">▶</span>
+                                <span>JUGAR</span>
+                            </div>
+                        </a>
+                        <div class="juego-info">
+                            <div class="juego-nombre">Nombre del juego 3</div>
+                            <div class="juego-desc">Descripción corta del juego. Podés cambiarlo por lo que quieras.</div>
+                            <span class="juego-badge">💻 PC / Windows</span>
+                        </div>
+                    </div>
+
+                    <!-- JUEGO PC 4 -->
+                    <div class="juego-card">
+                        <a href="#" target="_blank" class="juego-thumb">
+                            🌍
+                            <div class="play-overlay">
+                                <span class="play-icon">▶</span>
+                                <span>JUGAR</span>
+                            </div>
+                        </a>
+                        <div class="juego-info">
+                            <div class="juego-nombre">Nombre del juego 4</div>
+                            <div class="juego-desc">Descripción corta del juego. Podés cambiarlo por lo que quieras.</div>
+                            <span class="juego-badge">💻 PC / Windows</span>
+                        </div>
+                    </div>
+
+                    <!-- JUEGO PC 5 -->
+                    <div class="juego-card">
+                        <a href="#" target="_blank" class="juego-thumb">
+                            🔥
+                            <div class="play-overlay">
+                                <span class="play-icon">▶</span>
+                                <span>JUGAR</span>
+                            </div>
+                        </a>
+                        <div class="juego-info">
+                            <div class="juego-nombre">Nombre del juego 5</div>
+                            <div class="juego-desc">Descripción corta del juego. Podés cambiarlo por lo que quieras.</div>
+                            <span class="juego-badge">💻 PC / Windows</span>
+                        </div>
+                    </div>
+
+                    <!-- JUEGO PC 6 -->
+                    <div class="juego-card">
+                        <a href="#" target="_blank" class="juego-thumb">
+                            🎲
+                            <div class="play-overlay">
+                                <span class="play-icon">▶</span>
+                                <span>JUGAR</span>
+                            </div>
+                        </a>
+                        <div class="juego-info">
+                            <div class="juego-nombre">Nombre del juego 6</div>
+                            <div class="juego-desc">Descripción corta del juego. Podés cambiarlo por lo que quieras.</div>
+                            <span class="juego-badge">💻 PC / Windows</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div><!-- fin panel computadora -->
+
+        </div><!-- fin juegos-section -->
+
+    </div><!-- fin container -->
 
     <!-- FOOTER -->
     <footer id="contacto">
@@ -433,6 +891,19 @@
         <p>Sígueme en redes sociales para más contenido</p>
         <a href="perros-salchichas.html" target="_blank" id="messi">mis otras paginas webs! si quieres que te haga una contactame</a>
     </footer>
+
+    <script>
+        function switchTab(tab) {
+            // Ocultar todos los paneles y desactivar todos los botones
+            document.querySelectorAll('.juegos-panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+
+            // Activar el panel y botón seleccionado
+            document.getElementById(tab).classList.add('active');
+            const idx = tab === 'celular' ? 0 : 1;
+            document.querySelectorAll('.tab-btn')[idx].classList.add('active');
+        }
+    </script>
 
 </body>
 </html>
