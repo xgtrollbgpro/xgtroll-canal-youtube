@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perros Salchichas - Dachshunds</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #8B6F47;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Patrón de manchas blancas y negras */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 15% 25%, rgba(255, 255, 255, 0.3) 0%, transparent 15%),
+                radial-gradient(circle at 85% 40%, rgba(0, 0, 0, 0.25) 0%, transparent 18%),
+                radial-gradient(circle at 25% 75%, rgba(0, 0, 0, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.35) 0%, transparent 16%),
+                radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.15) 0%, transparent 22%),
+                radial-gradient(circle at 10% 60%, rgba(255, 255, 255, 0.25) 0%, transparent 19%),
+                radial-gradient(circle at 90% 15%, rgba(0, 0, 0, 0.2) 0%, transparent 17%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: rgba(139, 69, 19, 0.8);
+            color: #FFF8DC;
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            border: 3px solid #5C4817;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        header p {
+            font-size: 1.2em;
+            font-style: italic;
+            color: #FFE4B5;
+        }
+
+        .seccion {
+            background-color: rgba(255, 248, 220, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            border-left: 5px solid #8B4513;
+        }
+
+        .seccion h2 {
+            color: #8B4513;
+            font-size: 2em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .seccion-con-imagen {
+            display: flex;
+            gap: 30px;
+            align-items: start;
+            flex-wrap: wrap;
+        }
+
+        .contenido-texto {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .imagen-seccion {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .imagen-seccion img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: 3px solid #8B4513;
+        }
+
+        .imagen-placeholder {
+            background-color: #D2B48C;
+            border: 3px dashed #8B4513;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            color: #8B4513;
+            font-weight: bold;
+            font-size: 1.1em;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .seccion p {
+            color: #333;
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .tipos-lista {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .tipo-card {
+            background-color: #FFF8DC;
+            border: 2px solid #D2B48C;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .tipo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .tipo-card h3 {
+            color: #8B4513;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .tipo-card p {
+            color: #555;
+            font-size: 0.95em;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .caracteristicas {
+            color: #8B4513;
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+
+        .introduccion-imagen {
+            float: right;
+            margin: 0 0 20px 30px;
+            max-width: 350px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .seccion-con-imagen {
+                flex-direction: column;
+            }
+
+            .introduccion-imagen {
+                float: none;
+                margin: 20px 0;
+                max-width: 100%;
+            }
+
+            .tipos-lista {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        footer {
+            text-align: center;
+            color: #FFF8DC;
+            padding: 20px;
+            margin-top: 40px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐕 Perros Salchichas 🐕</h1>
+            <p>Dachshunds: Los perros alargados más adorables</p>
+        </header>
+
+        <!-- Sección de Introducción -->
+        <div class="seccion">
+            <h2>📖 ¿Qué son los Perros Salchichas?</h2>
+            <div class="seccion-con-imagen">
+                <div class="contenido-texto">
+                    <p>
+                        Los perros salchichas, conocidos científicamente como Dachshunds, son una raza de origen alemán 
+                        caracterizada por su cuerpo alargado y sus patas cortas. Su nombre proviene del alemán "Dachs" 
+                        (tejón) y "Hund" (perro), ya que fueron originalmente criados para cazar tejones en sus madrigueras.
+                    </p>
+                    <p>
+                        Estos perros son conocidos por su valentía, inteligencia y carácter juguetón. A pesar de su pequeño 
+                        tamaño, tienen una gran personalidad y son extremadamente leales a sus familias. Los perros salchichas 
+                        son excelentes compañeros y se adaptan bien a diferentes tipos de hogar.
+                    </p>
+                    <p>
+                        Son perros curiosos, persistentes y a menudo muy obstinados. Tienen un ladrido potente para su tamaño 
+                        y una pasión por cavar, características heredadas de su historia como cazadores. Su esperanza de vida 
+                        es generalmente de 12 a 16 años, siendo una de las razas más longevas.
+                    </p>
+                </div>
+                <div class="imagen-seccion">
+                    <div class="imagen-placeholder">
+                        <img src="https://cdn.wamiz.fr/cdn-cgi/image/format=auto,quality=80,width=1200,height=675,fit=cover/animal/breed/dog/adult/5caf205f3bbb0450217224.jpg" alt="Perro Salchicha">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de Tipos -->
+        <div class="seccion">
+            <h2>🎨 Tipos de Perros Salchichas</h2>
+            <p style="margin-bottom: 25px;">
+                Existen diferentes tipos de perros salchichas clasificados principalmente por su tamaño y tipo de pelaje:
+            </p>
+
+            <div class="tipos-lista">
+                <div class="tipo-card">
+                    <h3>Miniatura de Pelaje Corto</h3>
+                    <p>
+                        Los más pequeños de la raza, pesan menos de 3.5 kg. Su pelaje es suave y brillante, 
+                        perfectamente adaptado a la vida en apartamentos.
+                    </p>
+                    <div class="caracteristicas">
+                        Peso: 1.5 - 3.5 kg | Energía: Alta | Aseo: Bajo
+                    </div>
+                </div>
+
+                <div class="tipo-card">
+                    <h3>Estándar de Pelaje Corto</h3>
+                    <p>
+                        El tipo más popular, pesa entre 7 y 14 kg. Musculoso y bien proporcionado, con un 
+                        pelaje denso y protector.
+                    </p>
+                    <div class="caracteristicas">
+                        Peso: 7 - 14 kg | Energía: Media-Alta | Aseo: Bajo
+                    </div>
+                </div>
+
+                <div class="tipo-card">
+                    <h3>Miniatura de Pelaje Largo</h3>
+                    <p>
+                        Similar al miniatura de pelaje corto pero con un hermoso pelaje largo y sedoso. 
+                        Requiere cepillado regular para mantenerlo en buen estado.
+                    </p>
+                    <div class="caracteristicas">
+                        Peso: 1.5 - 3.5 kg | Energía: Alta | Aseo: Medio
+                    </div>
+                </div>
+
+                <div class="tipo-card">
+                    <h3>Estándar de Pelaje Largo</h3>
+                    <p>
+                        La versión más elegante de la raza. Su pelaje largo y sedoso requiere cuidados 
+                        especiales, pero su belleza lo compensa totalmente.
+                    </p>
+                    <div class="caracteristicas">
+                        Peso: 7 - 14 kg | Energía: Media-Alta | Aseo: Medio-Alto
+                    </div>
+                </div>
+
+                <div class="tipo-card">
+                    <h3>Miniatura de Pelaje de Alambre</h3>
+                    <p>
+                        Un pelaje áspero y resistente que les da una apariencia robusta. Perfectos para 
+                        climas más variados. Requieren aseo profesional periódico.
+                    </p>
+                    <div class="caracteristicas">
+                        Peso: 1.5 - 3.5 kg | Energía: Alta | Aseo: Medio
+                    </div>
+                </div>
+
+                <div class="tipo-card">
+                    <h3>Estándar de Pelaje de Alambre</h3>
+                    <p>
+                        La versión más robusta de pelaje de alambre. Muy resistente y resistente a la 
+                        intemperie, ideal para actividades al aire libre.
+                    </p>
+                    <div class="caracteristicas">
+                        Peso: 7 - 14 kg | Energía: Media-Alta | Aseo: Medio
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de Características -->
+        <div class="seccion">
+            <h2>⭐ Características Especiales</h2>
+            <div class="seccion-con-imagen">
+                <div class="contenido-texto">
+                    <p>
+                        <strong>Temperamento:</strong> Los perros salchichas son famosos por su gran coraje 
+                        a pesar de su tamaño. Son juguetones, afectuosos y muy inteligentes. Tienden a ser 
+                        independientes y pueden ser testarudos, pero responden bien al entrenamiento consistente.
+                    </p>
+                    <p>
+                        <strong>Salud:</strong> Es importante monitorear su peso para evitar problemas de espalda 
+                        debido a su estructura única. Necesitan ejercicio regular pero no excesivo. Los cuidados 
+                        dentales también son importantes en esta raza.
+                    </p>
+                    <p>
+                        <strong>Adiestramiento:</strong> Son perros inteligentes pero pueden ser obstinados. 
+                        El entrenamiento debe ser positivo, consistente y divertido. Responden muy bien a 
+                        las recompensas y el refuerzo positivo.
+                    </p>
+                    <p>
+                        <strong>Socialización:</strong> Es crucial socializarlos desde cachorros para que sean 
+                        amigables con otros perros y personas. Aunque son pequeños, su instinto de cazador aún 
+                        está presente.
+                    </p>
+                </div>
+                <div class="imagen-seccion">
+                    <div class="imagen-placeholder">
+                        <img src="https://www.vanguardia.com/sites/default/files/foto_interna/2017/10/03/gal_haund.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>🐾 Ama a los perros salchichas tanto como ellos te aman a ti 🐾</p>
+        </footer>
+    </div>
+</body>
+</html>

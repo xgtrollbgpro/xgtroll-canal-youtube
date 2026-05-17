@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CAMBIAR: Reemplaza "Mi Canal de YouTube" con el nombre de tu canal -->
+    <title>Mi Canal de YouTube</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            /* FONDO AZUL: Puedes cambiar el color azul aquí */
+            background-color: #1a1a2e;
+            background: linear-gradient(135deg, #0f3460 0%, #16213e 50%, #0f3460 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        /* Barra de navegación superior */
+        nav {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #e94560;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 1em;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #e94560;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* SECCIÓN DE ENCABEZADO / BANNER */
+        .banner {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(233, 69, 96, 0.2) 0%, rgba(52, 152, 219, 0.2) 100%);
+            border-radius: 15px;
+            border: 2px solid #e94560;
+        }
+
+        .banner h1 {
+            /* CAMBIAR: Aquí va el nombre de tu canal */
+            font-size: 3em;
+            margin-bottom: 10px;
+            color: #e94560;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .banner p {
+            /* CAMBIAR: Aquí va el eslogan o frase corta de tu canal */
+            font-size: 1.3em;
+            color: #a8dadc;
+            font-style: italic;
+        }
+
+        /* SECCIÓN DE BIOGRAFÍA */
+        .biografia-section {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 50px;
+            border-left: 5px solid #e94560;
+            backdrop-filter: blur(10px);
+        }
+
+        .biografia-section h2 {
+            color: #e94560;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e94560;
+            padding-bottom: 10px;
+        }
+
+        .biografia-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .bio-texto p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #ddd;
+            text-align: justify;
+        }
+
+        .bio-imagen {
+            text-align: center;
+        }
+
+        .bio-imagen img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            border: 3px solid #e94560;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .imagen-placeholder-bio {
+            width: 100%;
+            max-width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            border-radius: 15px;
+            border: 3px dashed #e94560;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .imagen-placeholder-bio img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 3px solid #e94560;
+            display: block;
+        }
+
+        /* SECCIÓN DE REDES SOCIALES */
+        .redes-sociales {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+        .red-social {
+            display: inline-block;
+            padding: 12px 20px;
+            background-color: #e94560;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .red-social:hover {
+            background-color: #d63447;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(233, 69, 96, 0.4);
+        }
+
+        /* SECCIÓN DE VIDEOS */
+        .videos-section {
+            margin-bottom: 50px;
+        }
+
+        .videos-section h2 {
+            color: #e94560;
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-align: center;
+            border-bottom: 2px solid #e94560;
+            padding-bottom: 10px;
+        }
+
+        /* GRID DE VIDEOS */
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+
+        .video-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid rgba(233, 69, 96, 0.3);
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .video-card:hover {
+            border-color: #e94560;
+            box-shadow: 0 8px 25px rgba(233, 69, 96, 0.3);
+            transform: translateY(-8px);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3em;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-thumbnail:hover {
+            background: linear-gradient(135deg, #2980b9, #1f5f8f);
+        }
+
+        .video-info {
+            padding: 15px;
+        }
+
+        .video-titulo {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #e94560;
+            margin-bottom: 8px;
+        }
+
+        .video-descripcion {
+            font-size: 0.95em;
+            color: #aaa;
+            line-height: 1.5;
+        }
+
+        /* Aumentar tamaño del enlace con id 'messi' en 90% */
+        #messi {
+            font-size: 190%;
+            color: #fff;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 2px solid rgba(233, 69, 96, 0.3);
+            color: #aaa;
+            margin-top: 50px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .banner h1 {
+                font-size: 2em;
+            }
+
+            .biografia-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .videos-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav>
+        <div class="nav-content">
+            <div class="logo">▶ xgtrollbgpro </div>
+            <div class="nav-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#biografia">Biografía</a>
+                <a href="#videos">Videos</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- BANNER / ENCABEZADO -->
+        <div class="banner" id="inicio">
+            <h1>🎬 XGTROLLBGPROPVP 🎬</h1>
+            <!-- CAMBIAR: Reemplaza esto con tu eslogan o descripción corta -->
+            <p>"Muy buenas gente que tal estamos"</p>
+        </div>
+
+        <!-- SECCIÓN DE BIOGRAFÍA -->
+        <div class="biografia-section" id="biografia">
+            <h2>Sobre Mí</h2>
+            <div class="biografia-content">
+                <div class="bio-texto">
+                    <!-- muy buenas gente que tal estamos -->
+                    <p>
+                        ¡Hola! Soy Xgtroll. Bienvenido a mi canal donde compartimos de cosas xd.
+                    </p>
+                    <p>
+                        Mi pasión es entretenerlos. A través de este canal, espero inspirar a otros y compartir 
+                        mis conocimientos sobre minecraft ect.
+                    </p>
+                    <p>
+                        Llevo 2 años creando contenido y me encanta ver cómo mis seguidores crecen cada día. 
+                        Si quieres acompañarme en este viaje, ¡no olvides suscribirte!
+                    </p>
+
+                    <!-- REDES SOCIALES: CAMBIAR LOS ENLACES -->
+                    <div class="redes-sociales">
+                        <!-- CAMBIAR: Reemplaza los # con tus enlaces reales -->
+                        <a href="https://www.youtube.com/@xgtroll" target="_blank" class="red-social">🎬 YouTube</a>
+                        
+                    </div>
+                </div>
+
+                <div class="bio-imagen">
+                    <!-- CAMBIAR: Reemplaza esto con la URL de tu foto de perfil -->
+                    <!-- Ejemplo: <img src="https://link-a-tu-foto.jpg" alt="Tu foto"> -->
+                    <div class="imagen-placeholder-bio">
+                        <img src="messi.jpg" alt="messi">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN DE VIDEOS DESTACADOS -->
+        <div class="videos-section" id="videos">
+            <h2>📹 Mis Videos Destacados</h2>
+
+            <div class="videos-grid">
+                <!-- VIDEO 1 -->
+                <div class="video-card">
+                    <!-- CAMBIAR: Reemplaza # con el link del video de YouTube -->
+                    <a href="https://youtu.be/K9QEw4YSwks?si=qeHbX6j7EJb2l3yq" target="_blank" class="video-thumbnail">
+                        ▶ video top
+                    </a>
+                    <div class="video-info">
+                        <!-- CAMBIAR: Título del video -->
+                        <div class="video-titulo">la copia de benja calero</div>
+                        <!-- CAMBIAR: Descripción del video -->
+                        <div class="video-descripcion">una fuerte polemica ataca a benito el perezoso</div>
+                    </div>
+                </div>
+
+                <!-- VIDEO 2 -->
+                <div class="video-card">
+                    <a href="https://youtu.be/gTis41ZOGWw?si=mwbQDNLppRrcuh2X" target="_blank" class="video-thumbnail">
+                        ▶ bed wars 
+                    </a>
+                    <div class="video-info">
+                        <div class="video-titulo">jugando bed wars con un amigo</div>
+                        <div class="video-descripcion">juego divertido de bed wars con un amigo</div>
+                    </div>
+                </div>
+
+                <!-- VIDEO 3 -->
+                <div class="video-card">
+                    <a href="https://youtu.be/3FGcMBmuFBM?si=ECT9xqKjvKECKKb5" target="_blank" class="video-thumbnail">
+                        ▶  autos among us
+                    </a>
+                    <div class="video-info">
+                        <div class="video-titulo">autos amongus</div>
+                        <div class="video-descripcion">juego divertido de autos among us</div>
+                    </div>
+                </div>
+
+                <!-- VIDEO 4 -->
+                <div class="video-card">
+                    <a href="https://youtu.be/hiPgWingHZU?si=ng1ENBh6FdTA-pW1" target="_blank" class="video-thumbnail">
+                        ▶ botlle flip
+                    </a>
+                    <div class="video-info">
+                        <div class="video-titulo">botlle flip</div>
+                        <div class="video-descripcion">juego divertido de botlle flip con mi hermana</div>
+                    </div>
+                </div>
+
+                <!-- VIDEO 5 -->
+                <div class="video-card">
+                    <a href="https://youtu.be/DvARKPTs-iU?si=A4Gs8Y7LTGinr_AX" target="_blank" class="video-thumbnail">
+                        ▶ squid game con juguetes 
+                    </a>
+                    <div class="video-info">
+                        <div class="video-titulo">juego del calamar con juguetes </div>
+                        <div class="video-descripcion">juego divertido de juego del calamar con juguetes </div>
+                    </div>
+                </div>
+
+                <!-- VIDEO 6 -->
+                <div class="video-card">
+                    <a href="https://youtu.be/8WVD5mKnE6U?si=J7_zPxjQg2z0mcR_" target="_blank" class="video-thumbnail">
+                        ▶ uff cine
+                    </a>
+                    <div class="video-info">
+                        <div class="video-titulo">jugamos con agusto pro al bed wars</div>
+                        <div class="video-descripcion">cine</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="contacto">
+        <p>&copy; 2026 Mi Canal de YouTube. Todos los derechos reservados.</p>
+        <p>Sígueme en redes sociales para más contenido</p>
+        <a href="perros-salchichas.html" target="_blank" id="messi">mis otras paginas webs! si quieres que te haga una contactame</a>
+    </footer>
+
+</body>
+</html>
