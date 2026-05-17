@@ -784,7 +784,7 @@
 
                     <!-- JUEGO PC 1 — CAMBIAR ENLACE, NOMBRE Y DESCRIPCIÓN -->
                     <div class="juego-card">
-                        <a href="#" target="_blank" class="juego-thumb">
+                        <a href="https://tlauncher.uptodown.com/windows/descargar" target="_blank" class="juego-thumb">
                             🖥️
                             <div class="play-overlay">
                                 <span class="play-icon">▶</span>
@@ -792,15 +792,15 @@
                             </div>
                         </a>
                         <div class="juego-info">
-                            <div class="juego-nombre">Nombre del juego 1</div>
-                            <div class="juego-desc">Descripción corta del juego. Podés cambiarlo por lo que quieras.</div>
+                            <div class="juego-nombre">TLauncher</div>
+                            <div class="juego-desc">Link de descarga de TLauncher para Minecraft Java Edition en Windows.</div>
                             <span class="juego-badge">💻 PC / Windows</span>
                         </div>
                     </div>
 
                     <!-- JUEGO PC 2 -->
                     <div class="juego-card">
-                        <a href="#" target="_blank" class="juego-thumb">
+                        <a href="https://epic-games-launcher.uptodown.com/windows/descargar" target="_blank" class="juego-thumb">
                             🎯
                             <div class="play-overlay">
                                 <span class="play-icon">▶</span>
@@ -808,15 +808,16 @@
                             </div>
                         </a>
                         <div class="juego-info">
-                            <div class="juego-nombre">Nombre del juego 2</div>
-                            <div class="juego-desc">Descripción corta del juego. Podés cambiarlo por lo que quieras.</div>
+                            <div class="juego-nombre">Epic Games Launcher</div>
+                            <div class="juego-desc">Link de descarga del Epic Games Launcher para Windows.</div>
                             <span class="juego-badge">💻 PC / Windows</span>
                         </div>
                     </div>
 
                     <!-- JUEGO PC 3 -->
                     <div class="juego-card">
-                        <a href="#" target="_blank" class="juego-thumb">
+                        <a href="https://rockstar-games-launcher.uptodown.com/windows/descargar
+                        " target="_blank" class="juego-thumb">
                             🧱
                             <div class="play-overlay">
                                 <span class="play-icon">▶</span>
@@ -824,15 +825,15 @@
                             </div>
                         </a>
                         <div class="juego-info">
-                            <div class="juego-nombre">Nombre del juego 3</div>
-                            <div class="juego-desc">Descripción corta del juego. Podés cambiarlo por lo que quieras.</div>
+                            <div class="juego-nombre">Launcher de Rockstar Games</div>
+                            <div class="juego-desc">Link de descarga del Launcher de Rockstar Games para Windows.</div>
                             <span class="juego-badge">💻 PC / Windows</span>
                         </div>
                     </div>
 
                     <!-- JUEGO PC 4 -->
                     <div class="juego-card">
-                        <a href="#" target="_blank" class="juego-thumb">
+                        <a href="https://hello-minecraft-launcher.uptodown.com/windows/descargar" target="_blank" class="juego-thumb">
                             🌍
                             <div class="play-overlay">
                                 <span class="play-icon">▶</span>
@@ -840,15 +841,15 @@
                             </div>
                         </a>
                         <div class="juego-info">
-                            <div class="juego-nombre">Nombre del juego 4</div>
-                            <div class="juego-desc">Descripción corta del juego. Podés cambiarlo por lo que quieras.</div>
+                            <div class="juego-nombre">Hello Minecraft Launcher</div>
+                            <div class="juego-desc">Link de descarga del Hello Minecraft Launcher para Windows.</div>
                             <span class="juego-badge">💻 PC / Windows</span>
                         </div>
                     </div>
 
                     <!-- JUEGO PC 5 -->
                     <div class="juego-card">
-                        <a href="#" target="_blank" class="juego-thumb">
+                        <a href="https://n64recomp-launcher.uptodown.com/windows/descargar" target="_blank" class="juego-thumb">
                             🔥
                             <div class="play-overlay">
                                 <span class="play-icon">▶</span>
@@ -856,15 +857,15 @@
                             </div>
                         </a>
                         <div class="juego-info">
-                            <div class="juego-nombre">Nombre del juego 5</div>
-                            <div class="juego-desc">Descripción corta del juego. Podés cambiarlo por lo que quieras.</div>
+                            <div class="juego-nombre">N64Recomp Launcher</div>
+                            <div class="juego-desc">Link de descarga del N64Recomp Launcher para Windows.</div>
                             <span class="juego-badge">💻 PC / Windows</span>
                         </div>
                     </div>
 
                     <!-- JUEGO PC 6 -->
                     <div class="juego-card">
-                        <a href="#" target="_blank" class="juego-thumb">
+                        <a href="https://plants-vs-zombies.uptodown.com/windows/descargar" target="_blank" class="juego-thumb">
                             🎲
                             <div class="play-overlay">
                                 <span class="play-icon">▶</span>
@@ -872,8 +873,8 @@
                             </div>
                         </a>
                         <div class="juego-info">
-                            <div class="juego-nombre">Nombre del juego 6</div>
-                            <div class="juego-desc">Descripción corta del juego. Podés cambiarlo por lo que quieras.</div>
+                            <div class="juego-nombre">Plants vs. Zombies</div>
+                            <div class="juego-desc">Link de descarga de Plants vs. Zombies para Windows.</div>
                             <span class="juego-badge">💻 PC / Windows</span>
                         </div>
                     </div>
@@ -898,10 +899,11 @@
             document.querySelectorAll('.juegos-panel').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
 
-            // Activar el panel y botón seleccionado
+            // Activar el panel seleccionado
             document.getElementById(tab).classList.add('active');
-            const idx = tab === 'celular' ? 0 : 1;
-            document.querySelectorAll('.tab-btn')[idx].classList.add('active');
+            
+            // Buscar cuál botón se clickeó para ponerlo activo
+            event.currentTarget.classList.add('active');
         }
     </script>
 
