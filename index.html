@@ -11,12 +11,36 @@
             box-sizing: border-box;
         }
 
-        body {
+     body {
             font-family: 'Arial', sans-serif;
-            background-color: #1a1a2e;
-            background: linear-gradient(135deg, #0f3460 0%, #16213e 50%, #0f3460 100%);
+            background-color: #0b0b1a;
             color: #fff;
             min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            /* Fondo espacial con estrellas fijas y gradiente */
+            background: radial-gradient(circle at 50% 50%, #16213e 0%, #0f3460 50%, #0b0b1a 100%);
+        }
+
+        /* Capa de estrellas en movimiento */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px);
+            background-size: 550px 550px, 350px 350px, 250px 250px;
+            background-position: 0 0, 40px 60px, 130px 270px;
+            animation: viajarEspacio 20s linear infinite;
+            opacity: 0.4; /* Para que no moleste al leer el texto */
+        }
+
+        @keyframes viajarEspacio {
+            from { background-position: 0 0, 40px 60px, 130px 270px; }
+            to { background-position: 550px 550px, 390px 410px, 380px 820px; }
         }
 
         nav {
@@ -541,6 +565,53 @@
                 max-width: 100%;
             }
         }
+
+        /* ESTILOS DEL MINIJUEGO */
+        .game-section {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 50px;
+            border: 2px solid #e94560;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        .game-section h2 {
+            color: #e94560;
+            margin-bottom: 15px;
+        }
+        .status-turn {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: #a8dadc;
+        }
+        .board {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-template-rows: repeat(3, 100px);
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .cell {
+            background-color: rgba(15, 52, 96, 0.5);
+            border: 2px solid rgba(233, 69, 96, 0.3);
+            border-radius: 10px;
+            font-size: 2.5em;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        .cell:hover {
+            background-color: rgba(233, 69, 96, 0.2);
+            border-color: #e94560;
+        }
+        .cell.x { color: #e94560; text-shadow: 0 0 10px #e94560; }
+        .cell.o { color: #3498db; text-shadow: 0 0 10px #3498db; }
     </style>
 </head>
 <body>
@@ -593,6 +664,23 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+<div class="game-section" id="minijuego">
+            <h2>🎮 Desafío Ta-Te-Ti</h2>
+            <div class="status-turn" id="game-status">Turno de: X</div>
+            <div class="board" id="game-board">
+                <div class="cell" onclick="makeMove(this, 0)"></div>
+                <div class="cell" onclick="makeMove(this, 1)"></div>
+                <div class="cell" onclick="makeMove(this, 2)"></div>
+                <div class="cell" onclick="makeMove(this, 3)"></div>
+                <div class="cell" onclick="makeMove(this, 4)"></div>
+                <div class="cell" onclick="makeMove(this, 5)"></div>
+                <div class="cell" onclick="makeMove(this, 6)"></div>
+                <div class="cell" onclick="makeMove(this, 7)"></div>
+                <div class="cell" onclick="makeMove(this, 8)"></div>
+            </div>
+            <button class="red-social" onclick="resetGame()">🔄 Reiniciar Juego</button>
         </div>
 
         <!-- VIDEOS DESTACADOS -->
@@ -905,6 +993,66 @@
             // Buscar cuál botón se clickeó para ponerlo activo
             event.currentTarget.classList.add('active');
         }
+
+        // LÓGICA DEL TA-TE-TI
+        let boardState = ["", "", "", "", "", "", "", "", ""];
+        let currentPlayer = "X";
+        let gameActive = true;
+        const statusDisplay = document.getElementById('game-status');
+
+        const winningConditions = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], // Horizontales
+            [0, 3, 6], [1, 4, 7], [2, 5, 8], // Verticales
+            [0, 4, 8], [2, 4, 6]             // Diagonales
+        ];
+
+        function makeMove(cell, index) {
+            if (boardState[index] !== "" || !gameActive) return;
+
+            boardState[index] = currentPlayer;
+            cell.innerText = currentPlayer;
+            cell.classList.add(currentPlayer.toLowerCase());
+
+            checkResult();
+        }
+
+        function checkResult() {
+            let roundWon = false;
+            for (let i = 0; i < winningConditions.length; i++) {
+                const [a, b, c] = winningConditions[i];
+                if (boardState[a] && boardState[a] === boardState[b] && boardState[a] === boardState[c]) {
+                    roundWon = true;
+                    break;
+                }
+            }
+
+            if (roundWon) {
+                statusDisplay.innerText = `¡Victoria para las ${currentPlayer}! 🎉`;
+                gameActive = false;
+                return;
+            }
+
+            if (!boardState.includes("")) {
+                statusDisplay.innerText = "¡Empate! 🤝";
+                gameActive = false;
+                return;
+            }
+
+            currentPlayer = currentPlayer === "X" ? "O" : "X";
+            statusDisplay.innerText = `Turno de: ${currentPlayer}`;
+        }
+
+        function resetGame() {
+            boardState = ["", "", "", "", "", "", "", "", ""];
+            currentPlayer = "X";
+            gameActive = true;
+            statusDisplay.innerText = "Turno de: X";
+            document.querySelectorAll('.cell').forEach(cell => {
+                cell.innerText = "";
+                cell.classList.remove('x', 'o');
+            });
+        }
+        
     </script>
 
 </body>
