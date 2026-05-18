@@ -5,6 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XGTROLLBGPROPVP</title>
     <style>
+        /* ESTILOS DE LA ALERTA EN VIVO */
+        .live-alert {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: rgba(233, 69, 96, 0.2);
+            border: 1px solid #e94560;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            color: #fff;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .live-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #ff3838;
+            border-radius: 50%;
+            display: inline-block;
+            animation: parpadeoLive 1s infinite alternate;
+            box-shadow: 0 0 8px #ff3838;
+        }
+        @keyframes parpadeoLive {
+            from { opacity: 0.3; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1.1); }
+        }
+
+        /* ESTILOS DEL MODO HACKER (MATRIX) */
+        body.modo-hacker {
+            background: #000000 !important;
+        }
+        body.modo-hacker::before {
+            /* Cambia las estrellas por un tinte verde hacker */
+            background-image: 
+                radial-gradient(#00ff00, rgba(0,255,0,.2) 2px, transparent 40px),
+                radial-gradient(#00ff00, rgba(0,255,0,.15) 1px, transparent 30px);
+            opacity: 0.2;
+        }
+        body.modo-hacker h1, 
+        body.modo-hacker h2,
+        body.modo-hacker .logo,
+        body.modo-hacker .video-titulo,
+        body.modo-hacker .juegos-panel#celular .juego-nombre,
+        body.modo-hacker .juegos-panel#computadora .juego-nombre {
+            color: #00ff00 !important;
+            text-shadow: 0 0 10px #00ff00 !important;
+        }
+        body.modo-hacker nav,
+        body.modo-hacker .banner,
+        body.modo-hacker .biografia-section,
+        body.modo-hacker .video-card,
+        body.modo-hacker .juego-card,
+        body.modo-hacker .game-section {
+            border-color: #00ff00 !important;
+            background-color: rgba(0, 255, 0, 0.02) !important;
+        }
+        body.modo-hacker .red-social,
+        body.modo-hacker .tab-btn.active {
+            background-color: #00ff00 !important;
+            color: #000 !important;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.6) !important;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -612,12 +678,79 @@
         }
         .cell.x { color: #e94560; text-shadow: 0 0 10px #e94560; }
         .cell.o { color: #3498db; text-shadow: 0 0 10px #3498db; }
+
+/* =============================================
+           ESTILOS DE LA RULETA DE LA FORTUNA
+        ============================================= */
+        .ruleta-section {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 50px;
+            border: 2px solid #e94560;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+        .ruleta-section h2 {
+            color: #e94560;
+            margin-bottom: 5px;
+        }
+        .ruleta-section p {
+            color: #a8dadc;
+            margin-bottom: 25px;
+        }
+        .ruleta-wrapper {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 25px auto;
+        }
+        /* Flecha indicadora de arriba */
+        .ruleta-flecha {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 25px solid #e94560;
+            z-index: 10;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5));
+        }
+        /* El círculo de la ruleta */
+        .ruleta-canvas {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(233, 69, 96, 0.5);
+            border: 5px solid #fff;
+            background: #111;
+            transition: transform 4s cubic-bezier(0.15, 0.85, 0.35, 1);
+        }
+        .resultado-ruleta {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #fff;
+            min-height: 40px;
+            margin-top: 15px;
+            text-shadow: 0 0 10px rgba(255,255,255,0.3);
+        }
+        /* Ajuste para modo hacker */
+        body.modo-hacker .ruleta-section { border-color: #00ff00 !important; }
+        body.modo-hacker .ruleta-flecha { border-top-color: #00ff00 !important; }
+        body.modo-hacker .ruleta-canvas { box-shadow: 0 0 20px rgba(0, 255, 0, 0.5); }
+
     </style>
 </head>
 <body>
 
     <!-- BARRA DE NAVEGACIÓN -->
     <nav>
+        <button onclick="toggleHackerMode()" class="red-social" style="padding: 6px 12px; font-size: 0.85em; background-color: #111; border: 1px solid #e94560;">🕶️ Modo Hacker</button>
+
         <div class="nav-content">
             <div class="logo">▶ xgtrollbgpro</div>
             <div class="nav-links">
@@ -634,8 +767,14 @@
 
         <!-- BANNER -->
         <div class="banner" id="inicio">
-            <h1>🎬 XGTROLLBGPROPVP 🎬</h1>
-            <p>"Muy buenas gente que tal estamos"</p>
+    <h1>🎬 XGTROLLBGPROPVP 🎬</h1>
+    <p>"Muy buenas gente que tal estamos"</p>
+    <a href="https://www.youtube.com/@xgtroll" target="_blank" style="text-decoration: none;">
+        <div class="live-alert">
+            <span class="live-dot"></span> ● Directo en YouTube ¡Clic Acá!
+        </div>
+    </a>
+</div>
         </div>
 
         <!-- BIOGRAFÍA -->
@@ -682,6 +821,7 @@
             </div>
             <button class="red-social" onclick="resetGame()">🔄 Reiniciar Juego</button>
         </div>
+        
 
         <!-- VIDEOS DESTACADOS -->
         <div class="videos-section" id="videos">
@@ -730,6 +870,19 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="ruleta-section" id="ruleta-juegos">
+            <h2>🎰 Ruleta de la Fortuna Gamer</h2>
+            <p>¿No sabés qué jugar hoy? ¡Dejá que la ruleta decida por vos!</p>
+            
+            <div class="ruleta-wrapper">
+                <div class="ruleta-flecha"></div>
+                <canvas id="ruletaCanvas" width="300" height="300" class="ruleta-canvas"></canvas>
+            </div>
+            
+            <button class="red-social" id="btnGirar" onclick="girarRuleta()">🔥 Girar Ruleta</button>
+            <div class="resultado-ruleta" id="resultadoRuleta">¡Tentá a la suerte! 🍀</div>
         </div>
 
         <!-- =============================================
@@ -1052,7 +1205,96 @@
                 cell.classList.remove('x', 'o');
             });
         }
+
+        // FUNCIÓN MODO HACKER
+        function toggleHackerMode() {
+            document.body.classList.toggle('modo-hacker');
+            
+            // Cambiar el texto del botón según el modo
+            const boton = event.currentTarget;
+            if (document.body.classList.contains('modo-hacker')) {
+                boton.innerText = "🚀 Modo Normal";
+                boton.style.borderColor = "#00ff00";
+            } else {
+                boton.innerText = "🕶️ Modo Hacker";
+                boton.style.borderColor = "#e94560";
+            }
+        }
+        // =============================================
+        // LÓGICA DE LA RULETA DE LA FORTUNA
+        // =============================================
+        const opcionesJuegos = [
+            "FNAF 4 🐻", 
+            "FNAF World 🦊", 
+            "FNAF 3 🐰", 
+            "PojavLauncher ⚒️", 
+            "FNAF 2 🐷", 
+            "Bedwars ⚔️",
+            "epic games 🚀",
+            "FNAF Halloween 🎃"
+        ];
         
+        // Colores alternados para la ruleta
+        const coloresRuleta = ["#e94560", "#0f3460", "#3498db", "#16213e", "#222831", "#393e46", "#b5525c", "#2b2e4a"];
+        const canvas = document.getElementById("ruletaCanvas");
+        const ctx = canvas.getContext("2d");
+        let enEjecucion = false;
+
+        // Función para dibujar la ruleta dinámicamente con Canvas
+        function dibujarRuleta() {
+            const numOpciones = opcionesJuegos.length;
+            const angularArea = (2 * Math.PI) / numOpciones;
+
+            for (let i = 0; i < numOpciones; i++) {
+                ctx.beginPath();
+                ctx.fillStyle = coloresRuleta[i % coloresRuleta.length];
+                ctx.moveTo(150, 150);
+                ctx.arc(150, 150, 145, i * angularArea, (i + 1) * angularArea);
+                ctx.fill();
+                ctx.stroke();
+
+                // Dibujar los textos de los juegos
+                ctx.save();
+                ctx.translate(150, 150);
+                ctx.rotate(i * angularArea + angularArea / 2);
+                ctx.fillStyle = "#fff";
+                ctx.font = "bold 12px Arial";
+                ctx.textAlign = "right";
+                ctx.fillText(opcionesJuegos[i], 130, 5);
+                ctx.restore();
+            }
+        }
+
+        // Ejecutar el dibujo apenas cargue la página
+        dibujarRuleta();
+
+        function girarRuleta() {
+            if (enEjecucion) return; // Evita que bugeen el botón dándole mil clicks
+            enEjecucion = true;
+            
+            const resultadoTxt = document.getElementById("resultadoRuleta");
+            resultadoTxt.innerText = "Girando... 🎰";
+            
+            // Genera entre 5 y 10 vueltas completas más un ángulo al azar
+            const vueltas = 5 + Math.floor(Math.random() * 5);
+            const gradosAzar = Math.floor(Math.random() * 360);
+            const totalGrados = (vueltas * 360) + gradosAzar;
+            
+            // Hace girar visualmente el canvas con CSS
+            canvas.style.transform = `rotate(${totalGrados}deg)`;
+            
+            // Calcular qué opción cayó cuando termine la animación (4 segundos = 4000ms)
+            setTimeout(() => {
+                const gradosFinales = (360 - (gradosAzar % 360)) % 360;
+                // Ajustamos -90 grados porque la aguja está arriba (a las 12 en punto)
+                const indiceFinal = Math.floor(((gradosFinales + 90) % 360) / (360 / opcionesJuegos.length));
+                
+                const juegoGanador = opcionesJuegos[indiceFinal];
+                resultadoTxt.innerText = `🎰 ¡Hoy se vicia fuerte a: ${juegoGanador}!`;
+                enEjecucion = false;
+            }, 4000);
+        }
+
     </script>
 
 </body>
