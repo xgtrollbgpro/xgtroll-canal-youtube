@@ -872,6 +872,14 @@
             </div>
         </div>
 
+<!-- CHAT EN VIVO SIMULADO -->
+<div class="biografia-section" id="live-chat-box">
+    <h2>💬 Chat de la Comunidad (En Vivo)</h2>
+    <div id="chat-container" style="height: 200px; overflow-y: auto; background: rgba(0,0,0,0.4); padding: 15px; border-radius: 10px; font-family: monospace; text-align: left; margin-bottom: 15px;">
+        <!-- Los comentarios aparecerán acá mágicamente -->
+    </div>
+</div>
+
         <div class="ruleta-section" id="ruleta-juegos">
             <h2>🎰 Ruleta de la Fortuna Gamer</h2>
             <p>¿No sabés qué jugar hoy? ¡Dejá que la ruleta decida por vos!</p>
@@ -1119,13 +1127,89 @@
                             <span class="juego-badge">💻 PC / Windows</span>
                         </div>
                     </div>
-
                 </div>
             </div><!-- fin panel computadora -->
 
         </div><!-- fin juegos-section -->
 
     </div><!-- fin container -->
+
+    <!-- TRAGAMONEDAS GAMER -->
+<div class="game-section" id="slots-gamer">
+    <h2>🎰 Tragamonedas Troller</h2>
+    <p style="margin-bottom: 15px; color: #a8dadc;">Alineá 3 iconos iguales para ganar el premio mayor.</p>
+    
+    <div style="display: flex; justify-content: center; gap: 15px; font-size: 3.5em; margin-bottom: 20px; background: rgba(0,0,0,0.4); padding: 15px 30px; border-radius: 12px; border: 2px solid #e94560; max-width: 300px; margin-left: auto; margin-right: auto;">
+        <span id="slot1">⛏️</span>
+        <span id="slot2">💎</span>
+        <span id="slot3">🐻</span>
+    </div>
+
+    <button id="btn-slots" class="red-social" onclick="girarSlots()">🎰 Probar Suerte</button>
+    <div id="resultado-slots" style="margin-top: 15px; font-weight: bold; font-size: 1.2em; min-height: 25px;"></div>
+</div>
+
+    <!-- TEST GAMER -->
+<div class="ruleta-section" id="quiz-gamer" style="text-align: left;">
+    <h2 style="text-align: center;">📝 Test: ¿Qué tan Tóxico sos jugando?</h2>
+    <div id="quiz-contenido" style="margin-top: 20px; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 10px;">
+        <p id="pregunta-texto" style="font-size: 1.2em; font-weight: bold; margin-bottom: 15px; color: #e94560;">Si perdés un PvP en Minecraft, ¿qué hacés?</p>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+            <button class="red-social" style="text-align: left;" onclick="responderQuiz(1)">A) Decís "GG buena partida" y seguís jugando.</button>
+            <button class="red-social" style="text-align: left;" onclick="responderQuiz(2)">B) Decís que el otro llevaba hacks y le reportás la cuenta.</button>
+            <button class="red-social" style="text-align: left;" onclick="responderQuiz(3)">C) Rompés el teclado y cerrás el juego.</button>
+        </div>
+    </div>
+</div>
+
+    <!-- GENERADOR DE NICKS GAMER -->
+<div class="biografia-section" id="generador-nicks">
+    <h2>⚔️ Generador de Nicks Tryhard & Troll</h2>
+    <p style="margin-bottom: 20px; color: #aaa;">¿Sin ideas para tu nombre en Minecraft, Roblox o Free Fire? Generá uno único acá.</p>
+    
+    <div style="font-size: 1.8em; font-weight: bold; color: #00c9a7; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px; margin-bottom: 20px; border: 1px dashed #00c9a7; min-height: 40px;" id="nick-resultado">
+        ⚡ ¡Clic en Generar! ⚡
+    </div>
+    
+    <button class="red-social" style="background-color: #00c9a7;" onclick="generarNickGamer()">🎲 Generar Nombre</button>
+</div>
+
+<!-- BOLA 8 GAMER -->
+<div class="ruleta-section" id="bola-8-gamer">
+    <h2>🔮 El Oráculo de Xgtroll</h2>
+    <p>Hacé una pregunta sobre tus juegos favoritos y el Oráculo te dirá la verdad.</p>
+    <input type="text" id="pregunta-oraculo" placeholder="Escribí tu pregunta acá..." style="width: 100%; max-width: 400px; padding: 12px; margin: 15px 0; border-radius: 8px; border: 2px solid #e94560; background: #111; color: #fff; text-align: center; font-size: 1em;">
+    <br>
+    <button class="red-social" onclick="consultarOraculo()">🔮 Consultar Destino</button>
+    <div id="respuesta-oraculo" style="margin-top: 20px; font-size: 1.4em; font-weight: bold; color: #3498db; min-height: 35px;"></div>
+</div>
+
+
+    <!-- PANEL DE SONIDOS TROLL (100% MP3 COMPATIBLE) -->
+<div class="ruleta-section" id="soundboard">
+    <h2>🔊 Soundboard Troll en Vivo</h2>
+    <p>¡Dale clic para activar los efectos de sonido épicos!</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; margin-top: 20px;">
+        <button class="red-social" onclick="playTrollSound('https://sampleswap.org/samples-ghost/MELODIC%20LOOPS/SYNTH%20LOOPS/866[80]retro-arcade-game-over.mp3')">💥 Boom</button>
+        <button class="red-social" onclick="playTrollSound('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3')">🚨 Alerta</button>
+        <button class="red-social" onclick="playTrollSound('https://sampleswap.org/samples-ghost/SOUND%20EFFECTS%20and%20NOISES/Electro%20and%20Synthetic/192[80]8bit-laser.mp3')">😂 Risa Troll</button>
+        <button class="red-social" onclick="playTrollSound('https://sampleswap.org/samples-ghost/SOUND%20EFFECTS%20and%20NOISES/Electro%20and%20Synthetic/147[80]buzzy-game-beep.mp3')">🎮 Click Clip</button>
+    </div>
+</div>
+
+<!-- MEDIDOR DE CPS -->
+<div class="game-section" id="medidor-cps">
+    <h2>⏱️ Test de CPS (Clicks Per Second)</h2>
+    <p style="margin-bottom: 15px; color: #a8dadc;">Demostrá qué tan rápido es tu dedo para el PvP.</p>
+    
+    <div style="display: flex; justify-content: center; gap: 30px; margin-bottom: 20px;">
+        <div>Clicks: <span id="cps-clicks" style="font-weight:bold; color:#e94560;">0</span></div>
+        <div>Tiempo: <span id="cps-tiempo" style="font-weight:bold; color:#3498db;">5s</span></div>
+    </div>
+
+    <button id="btn-cps" class="red-social" style="width: 100%; max-width: 300px; height: 80px; font-size: 1.5em;" onclick="registrarClicCPS()">¡DALE CLIC ACÁ!</button>
+    <div id="cps-resultado" style="margin-top: 15px; font-weight: bold; min-height: 25px;"></div>
+</div>
 
     <!-- FOOTER -->
     <footer id="contacto">
@@ -1294,6 +1378,193 @@
                 enEjecucion = false;
             }, 4000);
         }
+
+        function playTrollSound(url) {
+    let audio = new Audio(url);
+    audio.volume = 0.5; // Volumen al 50%
+    audio.play();
+}
+
+const usuarios = ["GamerPro99", "ElPepe_PvP", "SpreenFan", "Messi_10", "XgTroll_Sub", "LaCobra", "Robloxiano"];
+const mensajes = ["¡Buenísimo el video de Benja Calero! 😂", "Pasa pack de texturas de Minecraft", "¡¡Directazo!!", "Hacé sorteo de robux crack", "Modo hacker activadooo 🕶️", "¿Sale un Bedwars?", "¡Saludame porfa!"];
+
+function simularChat() {
+    const chatContainer = document.getElementById("chat-container");
+    if (!chatContainer) return;
+    
+    // Elegir usuario y mensaje al azar
+    const user = usuarios[Math.floor(Math.random() * usuarios.length)];
+    const msg = mensajes[Math.floor(Math.random() * mensajes.length)];
+    
+    // Color aleatorio para el usuario
+    const color = ["#e94560", "#00c9a7", "#3498db", "#ffbe76", "#ff7675"][Math.floor(Math.random() * 5)];
+
+    chatContainer.innerHTML += `<p style="margin-bottom: 8px;"><strong style="color: ${color}">${user}:</strong> ${msg}</p>`;
+    chatContainer.scrollTop = chatContainer.scrollHeight; // Auto-scroll hacia abajo
+
+    // Limitar chat a 15 mensajes para que no colapse la PC
+    if (chatContainer.children.length > 15) {
+        chatContainer.removeChild(chatContainer.firstChild);
+    }
+}
+// Ejecutar un comentario nuevo cada 3 segundos
+setInterval(simularChat, 3000);
+ 
+function generarNickGamer() {
+    const prefijos = ["Xg_", "Lord", "El_", "iTz_", "Troll_", "PvP_", "Rey_"];
+    const palabras = ["Chiter", "Campero", "God", "Ghost", "Troll", "Baneado", "Spreen", "Pro"];
+    const sufijos = ["_99", "_PvP", "_YT", "_X", "_Bg", "_666"];
+    const simbolos = ["☠️", "⚡", "👑", "🎯", "💥", "🌌"];
+
+    const p = prefijos[Math.floor(Math.random() * prefijos.length)];
+    const w = palabras[Math.floor(Math.random() * palabras.length)];
+    const s = sufijos[Math.floor(Math.random() * sufijos.length)];
+    const sim = simbolos[Math.floor(Math.random() * simbolos.length)];
+
+    document.getElementById("nick-resultado").innerText = `${sim} ${p}${w}${s} ${sim}`;
+}
+
+function responderQuiz(opcion) {
+    const quizContenido = document.getElementById("quiz-contenido");
+    
+    if (opcion === 1) {
+        quizContenido.innerHTML = `<h3 style="color: #00c9a7; text-align:center;">👑 ¡Sos un Pro Humilde!</h3><p style="text-align:center; margin-top:10px;">Sos el orgullo de la comunidad. Seguí así crack.</p>`;
+    } else if (opcion === 2) {
+        quizContenido.innerHTML = `<h3 style="color: #ffbe76; text-align:center;">👀 Sos un Llorón Promedio</h3><p style="text-align:center; margin-top:10px;">Admitilo, te ganaron limpio. ¡A practicar ese PvP!</p>`;
+    } else {
+        quizContenido.innerHTML = `<h3 style="color: #e94560; text-align:center;">☣️ ¡ALERTA: Tóxico Nivel Dios!</h3><p style="text-align:center; margin-top:10px;">Un peligro para la sociedad gamer. Comprate un teclado de repuesto.</p>`;
+    }
+}
+
+let cpsClicks = 0;
+let cpsTiempo = 5;
+let cpsActivo = false;
+let cpsIntervalo;
+
+function registrarClicCPS() {
+    const btn = document.getElementById("btn-cps");
+    const resultado = document.getElementById("cps-resultado");
+
+    if (!cpsActivo && cpsTiempo === 5) {
+        // Empezar el test
+        cpsActivo = true;
+        resultado.innerText = "¡Dale dale dale! 🔥";
+        cpsIntervalo = setInterval(() => {
+            cpsTiempo--;
+            document.getElementById("cps-tiempo").innerText = cpsTiempo + "s";
+            
+            if (cpsTiempo <= 0) {
+                clearInterval(cpsIntervalo);
+                cpsActivo = false;
+                const totalCPS = (cpsClicks / 5).toFixed(1);
+                
+                let rango = "Manco 🐌";
+                if (totalCPS > 6) rango = "Gamer Promedio ⚔️";
+                if (totalCPS > 10) rango = "¡Hacker de Mouse! ⚡";
+
+                resultado.innerHTML = `¡Terminó! Hiciste un promedio de <span style="color:#00c9a7;">${totalCPS} CPS</span>. Rango: ${rango}`;
+                btn.disabled = true;
+                
+                // Reiniciar a los 4 segundos para volver a jugar
+                setTimeout(() => {
+                    cpsClicks = 0;
+                    cpsTiempo = 5;
+                    document.getElementById("cps-clicks").innerText = "0";
+                    document.getElementById("cps-tiempo").innerText = "5s";
+                    resultado.innerText = "";
+                    btn.disabled = false;
+                }, 4000);
+            }
+        }, 1000);
+    }
+
+    if (cpsActivo) {
+        cpsClicks++;
+        document.getElementById("cps-clicks").innerText = cpsClicks;
+    }
+}
+
+    function consultarOraculo() {
+    const pregunta = document.getElementById("pregunta-oraculo").value.trim();
+    const respuestaDiv = document.getElementById("respuesta-oraculo");
+    
+    if (pregunta === "") {
+        respuestaDiv.innerText = "❌ ¡Che, tenés que escribir una pregunta primero!";
+        respuestaDiv.style.color = "#e94560";
+        return;
+    }
+
+    const respuestas = [
+        "🔥 ¡Olvidate! Vas a ganar con los ojos cerrados.",
+        "🐌 No lo veo posible, jugás como manco hoy.",
+        "🕶️ El Modo Hacker dice que sí, pero no uses cheats.",
+        "🤫 Ni Benja Calero sabe la respuesta a eso.",
+        "💎 El dios del PvP te bendice: ¡SÍ!",
+        "💥 F... explotaste como un Creeper. O sea, NO.",
+        "🍀 Depende de cuántos clicks por segundo hagas hoy."
+    ];
+
+    respuestaDiv.innerText = "Pensando... 🧠";
+    respuestaDiv.style.color = "#aaa";
+
+    setTimeout(() => {
+        const randomRes = respuestas[Math.floor(Math.random() * respuestas.length)];
+        respuestaDiv.innerText = randomRes;
+        respuestaDiv.style.color = "#00c9a7";
+    }, 1200);
+}
+
+let ranurasGiran = false;
+function girarSlots() {
+    if (ranurasGiran) return;
+    ranurasGiran = true;
+    
+    const iconos = ["⛏️", "💎", "🐻", "🟩", "👑", "⚡"];
+    const s1 = document.getElementById("slot1");
+    const s2 = document.getElementById("slot2");
+    const s3 = document.getElementById("slot3");
+    const res = document.getElementById("resultado-slots");
+    const btn = document.getElementById("btn-slots");
+
+    res.innerText = "¡Girando! 🔄";
+    res.style.color = "#aaa";
+    btn.disabled = true;
+
+    // Efecto de parpadeo rápido para simular el giro
+    let contador = 0;
+    const intervalo = setInterval(() => {
+        s1.innerText = iconos[Math.floor(Math.random() * iconos.length)];
+        s2.innerText = iconos[Math.floor(Math.random() * iconos.length)];
+        s3.innerText = iconos[Math.floor(Math.random() * iconos.length)];
+        contador++;
+        if (contador > 15) {
+            clearInterval(intervalo);
+            
+            // Resultado definitivo
+            const final1 = iconos[Math.floor(Math.random() * iconos.length)];
+            const final2 = iconos[Math.floor(Math.random() * iconos.length)];
+            const final3 = iconos[Math.floor(Math.random() * iconos.length)];
+            
+            s1.innerText = final1;
+            s2.innerText = final2;
+            s3.innerText = final3;
+
+            if (final1 === final2 && final2 === final3) {
+                res.innerText = "🏆 ¡¡JACKPOT!! Te ganaste 1.000.000 de Robux falsos";
+                res.style.color = "#00c9a7";
+            } else if (final1 === final2 || final2 === final3 || final1 === final3) {
+                res.innerText = "👀 Casi... ¡Dupla! Te llevás una espada de madera.";
+                res.style.color = "#3498db";
+            } else {
+                res.innerText = "🐌 Manco en la suerte, perdiste todo. ¡Volvé a intentar!";
+                res.style.color = "#e94560";
+            }
+            
+            ranurasGiran = false;
+            btn.disabled = false;
+        }
+    }, 100);
+}
 
     </script>
 
