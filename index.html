@@ -743,6 +743,214 @@
         body.modo-hacker .ruleta-flecha { border-top-color: #00ff00 !important; }
         body.modo-hacker .ruleta-canvas { box-shadow: 0 0 20px rgba(0, 255, 0, 0.5); }
 
+
+        /* =============================================
+           ESTILOS DE LA TIER LIST GAMER
+        ============================================= */
+        .tier-section {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 50px;
+            border: 2px solid #e94560;
+            backdrop-filter: blur(10px);
+        }
+        .tier-section h2 {
+            color: #e94560;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        .tier-section p {
+            color: #a8dadc;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .tier-list-container {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid rgba(233, 69, 96, 0.2);
+            margin-bottom: 30px;
+        }
+        .tier-row {
+            display: flex;
+            border-bottom: 2px solid #0b0b1a;
+            min-height: 90px;
+        }
+        .tier-row:last-child {
+            border-bottom: none;
+        }
+        .tier-label {
+            width: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.6rem;
+            color: #000;
+            text-shadow: 1px 1px 0px rgba(255,255,255,0.3);
+            user-select: none;
+        }
+        .tier-s { background-color: #ff7f7f; }
+        .tier-a { background-color: #ffbf7f; }
+        .tier-b { background-color: #ffdf7f; }
+        .tier-c { background-color: #ffff7f; }
+
+        .tier-dropzone {
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 10px;
+            gap: 10px;
+            background-color: rgba(255, 255, 255, 0.02);
+            transition: background-color 0.2s;
+            min-height: 90px;
+        }
+        .tier-dropzone.drag-over {
+            background-color: rgba(233, 69, 96, 0.15);
+        }
+        .games-bank {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .games-bank h3 {
+            margin-top: 0;
+            color: #a8dadc;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            text-align: left;
+        }
+        .game-item {
+            background: linear-gradient(135deg, #1f5f8f, #2980b9);
+            color: #fff;
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: grab;
+            font-weight: bold;
+            font-size: 0.95em;
+            user-select: none;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+        .game-item:active {
+            cursor: grabbing;
+            transform: scale(0.95);
+        }
+        .game-item.dragging {
+            opacity: 0.4;
+        }
+        /* Integración Modo Hacker */
+        body.modo-hacker .tier-section { border-color: #00ff00 !important; }
+        body.modo-hacker .tier-section h2 { color: #00ff00 !important; text-shadow: 0 0 10px #00ff00 !important; }
+        body.modo-hacker .tier-list-container { border-color: rgba(0, 255, 0, 0.3) !important; }
+        body.modo-hacker .tier-dropzone.drag-over { background-color: rgba(0, 255, 0, 0.15) !important; }
+        body.modo-hacker .game-item { background: linear-gradient(135deg, #005500, #00aa00) !important; }
+
+        /* =============================================
+           ESTILOS DEL CONTADOR DE HYPE (VOTACIÓN)
+        ============================================= */
+        .hype-section {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 50px;
+            border: 2px solid #e94560;
+            backdrop-filter: blur(10px);
+        }
+        .hype-section h2 {
+            color: #e94560;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        .hype-section p {
+            color: #a8dadc;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .hype-container {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .hype-item {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(233, 69, 96, 0.2);
+            position: relative;
+        }
+        .hype-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        .hype-name {
+            font-size: 1.1em;
+            color: #fff;
+        }
+        .hype-count {
+            color: #a8dadc;
+            font-size: 0.95em;
+        }
+        /* Contenedor de la barra */
+        .hype-bar-bg {
+            background: rgba(255, 255, 255, 0.1);
+            height: 14px;
+            border-radius: 7px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        /* La barra de color que se llena */
+        .hype-bar-fill {
+            height: 100%;
+            width: 0%; /* Se maneja con JS */
+            background: linear-gradient(90deg, #3498db, #e94560);
+            box-shadow: 0 0 10px rgba(233, 69, 96, 0.5);
+            transition: width 0.5s ease-out;
+        }
+        /* Botón de votar dentro de cada juego */
+        .btn-vote {
+            background: #e94560;
+            color: #fff;
+            border: none;
+            padding: 6px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.85em;
+            transition: all 0.2s;
+        }
+        .btn-vote:hover {
+            background: #d63447;
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(233, 69, 96, 0.4);
+        }
+        .btn-vote:disabled {
+            background: #444 !important;
+            color: #888;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        /* Ajuste para el Modo Hacker */
+        body.modo-hacker .hype-section { border-color: #00ff00 !important; }
+        body.modo-hacker .hype-section h2 { color: #00ff00 !important; text-shadow: 0 0 10px #00ff00 !important; }
+        body.modo-hacker .hype-item { border-color: rgba(0, 255, 0, 0.2) !important; }
+        body.modo-hacker .hype-bar-fill { background: linear-gradient(90deg, #005500, #00ff00) !important; box-shadow: 0 0 10px #00ff00; }
+        body.modo-hacker .btn-vote { background: #00ff00 !important; color: #000 !important; font-weight: 900; }
+
+
     </style>
 </head>
 <body>
@@ -753,12 +961,21 @@
 
         <div class="nav-content">
             <div class="logo">▶ xgtrollbgpro</div>
-            <div class="nav-links">
+           <div class="nav-links">
                 <a href="#inicio">Inicio</a>
                 <a href="#biografia">Biografía</a>
+                <a href="#tierlist-gamer">Tier List</a>
                 <a href="#videos">Videos</a>
                 <a href="#juegos">Juegos</a>
-                <a href="#contacto">Contacto</a>
+                <a href="#ruleta-juegos">Ruleta</a>
+                <a href="#live-chat-box">Chat</a>
+                <a href="#generador-nicks">Nicks</a>
+                <a href="#medidor-cps">CPS</a>
+                <a href="#bola-8-gamer">Oráculo</a>
+                <a href="#slots-gamer">tragamonedas</a>
+                <a href="#quiz-gamer">Test</a>
+                <a href="#hype-gamer">juego del mes</a>
+            </div>
             </div>
         </div>
     </nav>
@@ -1134,6 +1351,64 @@
 
     </div><!-- fin container -->
 
+    <!-- =============================================
+            NUEVA SECCIÓN: CONTADOR DE HYPE (VOTACIÓN)
+        ============================================= -->
+        <div class="hype-section" id="hype-gamer">
+            <h2>🔥 El Contador de Hype</h2>
+            <p>¿Qué juego querés que reviente el canal este mes? ¡Dejá tu voto!</p>
+
+            <div class="hype-container">
+                <!-- Juego 1: Minecraft -->
+                <div class="hype-item">
+                    <div class="hype-info">
+                        <span class="hype-name">⛏️ Minecraft</span>
+                        <span class="hype-count" id="count-minecraft">0 votos (0%)</span>
+                    </div>
+                    <div class="hype-bar-bg">
+                        <div class="hype-bar-fill" id="bar-minecraft"></div>
+                    </div>
+                    <button class="btn-vote" onclick="votarJuego('minecraft')">👍 Votar Hype</button>
+                </div>
+
+                <!-- Juego 2: Roblox -->
+                <div class="hype-item">
+                    <div class="hype-info">
+                        <span class="hype-name">🟥 Roblox</span>
+                        <span class="hype-count" id="count-roblox">0 votos (0%)</span>
+                    </div>
+                    <div class="hype-bar-bg">
+                        <div class="hype-bar-fill" id="bar-roblox"></div>
+                    </div>
+                    <button class="btn-vote" onclick="votarJuego('roblox')">👍 Votar Hype</button>
+                </div>
+
+                <!-- Juego 3: Fortnite -->
+                <div class="hype-item">
+                    <div class="hype-info">
+                        <span class="hype-name">🪂 Fortnite</span>
+                        <span class="hype-count" id="count-fortnite">0 votos (0%)</span>
+                    </div>
+                    <div class="hype-bar-bg">
+                        <div class="hype-bar-fill" id="bar-fortnite"></div>
+                    </div>
+                    <button class="btn-vote" onclick="votarJuego('fortnite')">👍 Votar Hype</button>
+                </div>
+
+                <!-- Juego 4: LoL -->
+                <div class="hype-item">
+                    <div class="hype-info">
+                        <span class="hype-name">⚔️ League of Legends</span>
+                        <span class="hype-count" id="count-lol">0 votos (0%)</span>
+                    </div>
+                    <div class="hype-bar-bg">
+                        <div class="hype-bar-fill" id="bar-lol"></div>
+                    </div>
+                    <button class="btn-vote" onclick="votarJuego('lol')">👍 Votar Hype</button>
+                </div>
+            </div>
+        </div>
+
     <!-- TRAGAMONEDAS GAMER -->
 <div class="game-section" id="slots-gamer">
     <h2>🎰 Tragamonedas Troller</h2>
@@ -1149,16 +1424,28 @@
     <div id="resultado-slots" style="margin-top: 15px; font-weight: bold; font-size: 1.2em; min-height: 25px;"></div>
 </div>
 
-    <!-- TEST GAMER -->
+ <!-- TEST GAMER -->
 <div class="ruleta-section" id="quiz-gamer" style="text-align: left;">
-    <h2 style="text-align: center;">📝 Test: ¿Qué tan Tóxico sos jugando?</h2>
-    <div id="quiz-contenido" style="margin-top: 20px; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 10px;">
-        <p id="pregunta-texto" style="font-size: 1.2em; font-weight: bold; margin-bottom: 15px; color: #e94560;">Si perdés un PvP en Minecraft, ¿qué hacés?</p>
-        <div style="display: flex; flex-direction: column; gap: 10px;">
-            <button class="red-social" style="text-align: left;" onclick="responderQuiz(1)">A) Decís "GG buena partida" y seguís jugando.</button>
-            <button class="red-social" style="text-align: left;" onclick="responderQuiz(2)">B) Decís que el otro llevaba hacks y le reportás la cuenta.</button>
-            <button class="red-social" style="text-align: left;" onclick="responderQuiz(3)">C) Rompés el teclado y cerrás el juego.</button>
-        </div>
+    <h2 style="text-align: center;">📝 Test: ¿Qué tan Humilde sos como Gamer?</h2>
+
+    <div class="progress-bar-wrap" style="background:rgba(255,255,255,0.1);border-radius:20px;height:10px;margin:20px 0 5px;">
+        <div id="progreso-fill" style="height:100%;background:linear-gradient(90deg,#e94560,#ff6b81);border-radius:20px;transition:width 0.5s;width:0%;"></div>
+    </div>
+    <div id="progreso-label" style="text-align:right;font-size:0.85em;color:#aaa;margin-bottom:20px;">Pregunta 0 de 5</div>
+
+    <div id="quiz-contenido" style="background:rgba(0,0,0,0.2);padding:25px;border-radius:12px;">
+        <div id="num-pregunta" style="font-size:0.8em;color:#e94560;font-weight:bold;letter-spacing:2px;margin-bottom:10px;"></div>
+        <p id="pregunta-texto" style="font-size:1.2em;font-weight:bold;margin-bottom:20px;color:#fff;line-height:1.5;"></p>
+        <div id="opciones-container" style="display:flex;flex-direction:column;gap:10px;"></div>
+    </div>
+
+    <div id="resultado-card" style="display:none;text-align:center;background:rgba(0,0,0,0.2);padding:35px;border-radius:12px;margin-top:10px;">
+        <span id="res-emoji" style="font-size:3.5em;display:block;margin-bottom:12px;"></span>
+        <div id="res-titulo" style="font-size:1.6em;font-weight:bold;margin-bottom:12px;"></div>
+        <p id="res-desc" style="color:#ccc;line-height:1.7;margin-bottom:20px;"></p>
+        <div id="res-puntos" style="display:inline-block;border:1px solid rgba(233,69,96,0.3);border-radius:30px;padding:6px 20px;color:#a8dadc;font-size:0.9em;margin-bottom:25px;"></div>
+        <br>
+        <button class="red-social" onclick="reiniciarTest()">🔄 Repetir test</button>
     </div>
 </div>
 
@@ -1210,6 +1497,49 @@
     <button id="btn-cps" class="red-social" style="width: 100%; max-width: 300px; height: 80px; font-size: 1.5em;" onclick="registrarClicCPS()">¡DALE CLIC ACÁ!</button>
     <div id="cps-resultado" style="margin-top: 15px; font-weight: bold; min-height: 25px;"></div>
 </div>
+
+
+<!-- =============================================
+            NUEVA SECCIÓN: TIER LIST INTERACTIVA
+        ============================================= -->
+        <div class="tier-section" id="tierlist-gamer">
+            <h2>🏆 Mi Tier List Oficial de Juegos</h2>
+            <p>¡Arrastrá y ordená los juegos según mis gustos o armá la tuya en directo!</p>
+
+            <!-- Contenedor de las filas de clasificación -->
+            <div class="tier-list-container">
+                <div class="tier-row">
+                    <div class="tier-label tier-s">S</div>
+                    <div class="tier-dropzone" data-tier="S"></div>
+                </div>
+                <div class="tier-row">
+                    <div class="tier-label tier-a">A</div>
+                    <div class="tier-dropzone" data-tier="A"></div>
+                </div>
+                <div class="tier-row">
+                    <div class="tier-label tier-b">B</div>
+                    <div class="tier-dropzone" data-tier="B"></div>
+                </div>
+                <div class="tier-row">
+                    <div class="tier-label tier-c">C</div>
+                    <div class="tier-dropzone" data-tier="C"></div>
+                </div>
+            </div>
+
+            <!-- Banco de juegos iniciales -->
+            <div class="games-bank">
+                <h3>Juegos por clasificar:</h3>
+                <div class="tier-dropzone" id="bank-zone">
+                    <div class="game-item" draggable="true" id="game-minecraft">Minecraft</div>
+                    <div class="game-item" draggable="true" id="game-roblox">Roblox</div>
+                    <div class="game-item" draggable="true" id="game-fifa">FIFA</div>
+                    <div class="game-item" draggable="true" id="game-pes">PES</div>
+                    <div class="game-item" draggable="true" id="game-fortnite">Fortnite</div>
+                    <div class="game-item" draggable="true" id="game-stumble">Stumble Guys</div>
+                    <div class="game-item" draggable="true" id="game-lol">LoL</div>
+                </div>
+            </div>
+        </div>
 
     <!-- FOOTER -->
     <footer id="contacto">
@@ -1424,17 +1754,6 @@ function generarNickGamer() {
     document.getElementById("nick-resultado").innerText = `${sim} ${p}${w}${s} ${sim}`;
 }
 
-function responderQuiz(opcion) {
-    const quizContenido = document.getElementById("quiz-contenido");
-    
-    if (opcion === 1) {
-        quizContenido.innerHTML = `<h3 style="color: #00c9a7; text-align:center;">👑 ¡Sos un Pro Humilde!</h3><p style="text-align:center; margin-top:10px;">Sos el orgullo de la comunidad. Seguí así crack.</p>`;
-    } else if (opcion === 2) {
-        quizContenido.innerHTML = `<h3 style="color: #ffbe76; text-align:center;">👀 Sos un Llorón Promedio</h3><p style="text-align:center; margin-top:10px;">Admitilo, te ganaron limpio. ¡A practicar ese PvP!</p>`;
-    } else {
-        quizContenido.innerHTML = `<h3 style="color: #e94560; text-align:center;">☣️ ¡ALERTA: Tóxico Nivel Dios!</h3><p style="text-align:center; margin-top:10px;">Un peligro para la sociedad gamer. Comprate un teclado de repuesto.</p>`;
-    }
-}
 
 let cpsClicks = 0;
 let cpsTiempo = 5;
@@ -1566,6 +1885,215 @@ function girarSlots() {
     }, 100);
 }
 
+const preguntas = [
+    {
+        texto: "Perdés un PvP en Minecraft. ¿Qué hacés?",
+        opciones: [
+            { letra: "A", texto: "Decís 'GG buena partida' y seguís jugando.", puntos: 3 },
+            { letra: "B", texto: "Decís que el otro llevaba hacks y lo reportás.", puntos: 2 },
+            { letra: "C", texto: "Rompés el teclado y cerrás el juego.", puntos: 1 }
+        ]
+    },
+    {
+        texto: "Tu equipo pierde por culpa de un compañero. ¿Qué hacés?",
+        opciones: [
+            { letra: "A", texto: "Le decís que no importa, la próxima lo hacemos mejor.", puntos: 3 },
+            { letra: "B", texto: "Lo ignorás y salís del servidor en silencio.", puntos: 2 },
+            { letra: "C", texto: "Le mandás mensajes diciéndole que es un inútil.", puntos: 1 }
+        ]
+    },
+    {
+        texto: "Ganás fácil contra alguien novato. ¿Qué hacés?",
+        opciones: [
+            { letra: "A", texto: "Le dás un consejo amable para que mejore.", puntos: 3 },
+            { letra: "B", texto: "No decís nada y seguís con otra partida.", puntos: 2 },
+            { letra: "C", texto: "Le hacés spam de 'EZ EZ EZ' en el chat.", puntos: 1 }
+        ]
+    },
+    {
+        texto: "Alguien usa una estrategia válida pero que no te parece justa. ¿Qué pensás?",
+        opciones: [
+            { letra: "A", texto: "Reconocés que fue inteligente y tratás de aprender.", puntos: 3 },
+            { letra: "B", texto: "Te molesta un poco pero lo dejás pasar.", puntos: 2 },
+            { letra: "C", texto: "Saltás al chat a gritar que el juego es basura.", puntos: 1 }
+        ]
+    },
+    {
+        texto: "Llevas 5 derrotas seguidas. ¿Qué hacés?",
+        opciones: [
+            { letra: "A", texto: "Tomás un descanso y volvés más tranquilo.", puntos: 3 },
+            { letra: "B", texto: "Seguís jugando pero ya estás caliente.", puntos: 2 },
+            { letra: "C", texto: "Empezás a insultar al juego y a todos los que se te cruzan.", puntos: 1 }
+        ]
+    }
+];
+
+const resultados = [
+    { min: 13, max: 15, emoji: "👑", titulo: "¡Pro Humilde de Élite!", color: "#00c9a7", desc: "Sos el jugador que todos quieren tener en el equipo. Perdés con clase, ganás sin creerte más. ¡Seguí así, crack!" },
+    { min: 10, max: 12, emoji: "😌", titulo: "Gamer Decente",          color: "#3498db", desc: "No sos un santo pero tampoco sos tóxico. Tenés tus momentos de calentón, pero en general te controlás." },
+    { min: 7,  max: 9,  emoji: "👀", titulo: "Llorón Promedio",        color: "#ffbe76", desc: "Cuando las cosas no salen bien, todos se enteran. Practicá más el 'GG' y menos el 'esto es trampa'." },
+    { min: 5,  max: 6,  emoji: "☣️", titulo: "¡ALERTA: Tóxico Nivel Dios!", color: "#e94560", desc: "Sos un peligro para la comunidad gamer. Comprate un teclado de repuesto (o dos)." }
+];
+
+let preguntaActual = 0;
+let puntajeTotal = 0;
+
+function mostrarPregunta() {
+    const p = preguntas[preguntaActual];
+    document.getElementById("num-pregunta").textContent = `PREGUNTA ${preguntaActual + 1} DE ${preguntas.length}`;
+    document.getElementById("pregunta-texto").textContent = p.texto;
+
+    const cont = document.getElementById("opciones-container");
+    cont.innerHTML = "";
+    p.opciones.forEach(op => {
+        const btn = document.createElement("button");
+        btn.className = "red-social";
+        btn.style.textAlign = "left";
+        btn.innerHTML = `<b style="color:#fff">${op.letra})</b> ${op.texto}`;
+        btn.onclick = () => elegirOpcion(op.puntos);
+        cont.appendChild(btn);
+    });
+
+    const porcentaje = (preguntaActual / preguntas.length) * 100;
+    document.getElementById("progreso-fill").style.width = porcentaje + "%";
+    document.getElementById("progreso-label").textContent = `Pregunta ${preguntaActual} de ${preguntas.length}`;
+}
+
+function elegirOpcion(puntos) {
+    puntajeTotal += puntos;
+    preguntaActual++;
+    if (preguntaActual < preguntas.length) {
+        mostrarPregunta();
+    } else {
+        mostrarResultado();
+    }
+}
+
+function mostrarResultado() {
+    document.getElementById("progreso-fill").style.width = "100%";
+    document.getElementById("progreso-label").textContent = `Pregunta ${preguntas.length} de ${preguntas.length}`;
+    document.getElementById("quiz-contenido").style.display = "none";
+    document.getElementById("resultado-card").style.display = "block";
+
+    const res = resultados.find(r => puntajeTotal >= r.min && puntajeTotal <= r.max);
+    document.getElementById("res-emoji").textContent = res.emoji;
+    document.getElementById("res-titulo").textContent = res.titulo;
+    document.getElementById("res-titulo").style.color = res.color;
+    document.getElementById("res-desc").textContent = res.desc;
+    document.getElementById("res-puntos").textContent = `Puntaje: ${puntajeTotal} / ${preguntas.length * 3}`;
+}
+
+function reiniciarTest() {
+    preguntaActual = 0;
+    puntajeTotal = 0;
+    document.getElementById("resultado-card").style.display = "none";
+    document.getElementById("quiz-contenido").style.display = "block";
+    mostrarPregunta();
+}
+
+mostrarPregunta();
+
+// =============================================
+// LÓGICA DE LA TIER LIST GAMER (ARRASTRAR Y SOLTAR)
+// =============================================
+const itemsGamer = document.querySelectorAll('.game-item');
+const zonasDrop = document.querySelectorAll('.tier-dropzone');
+
+itemsGamer.forEach(item => {
+    item.addEventListener('dragstart', () => {
+        item.classList.add('dragging');
+    });
+
+    item.addEventListener('dragend', () => {
+        item.classList.remove('dragging');
+    });
+});
+
+zonasDrop.forEach(zone => {
+    zone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        zone.classList.add('drag-over');
+    });
+
+    zone.addEventListener('dragleave', () => {
+        zone.classList.remove('drag-over');
+    });
+
+    zone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        zone.classList.remove('drag-over');
+        const itemArrastrado = document.querySelector('.dragging');
+        if (itemArrastrado) {
+            zone.appendChild(itemArrastrado);
+        }
+    });
+});
+
+// =============================================
+// LÓGICA DEL CONTADOR DE HYPE
+// =============================================
+
+// Inicializamos los votos (ficticios de base + los reales acumulados)
+let votosHype = {
+    minecraft: parseInt(localStorage.getItem('voto_mc')) || 142,
+    roblox: parseInt(localStorage.getItem('voto_roblox')) || 98,
+    fortnite: parseInt(localStorage.getItem('voto_fortnite')) || 125,
+    lol: parseInt(localStorage.getItem('voto_lol')) || 64
+};
+
+// Función para actualizar las barras y porcentajes en pantalla
+function actualizarContadoresHype() {
+    const totalVotos = votosHype.minecraft + votosHype.roblox + votosHype.fortnite + votosHype.lol;
+
+    for (let juego in votosHype) {
+        const cantidad = votosHype[juego];
+        // Calculamos porcentaje redondo
+        const porcentaje = totalVotos > 0 ? Math.round((cantidad / totalVotos) * 100) : 0;
+        
+        // Actualizamos los textos y las barras
+        document.getElementById(`count-${juego}`).innerText = `${cantidad} votos (${porcentaje}%)`;
+        document.getElementById(`bar-${juego}`).style.width = `${porcentaje}%`;
+    }
+
+    // Bloquear botones si el usuario ya votó anteriormente
+    if (localStorage.getItem('ya_voto_hype') === 'true') {
+        const botones = document.querySelectorAll('.btn-vote');
+        botones.forEach(btn => {
+            btn.disabled = true;
+            btn.innerText = 'Voto Registrado';
+        });
+    }
+}
+
+// Función que se ejecuta al clickear un botón de voto
+function votarJuego(juegoSeleccionado) {
+    // Protección para que no voten mil veces seguidas
+    if (localStorage.getItem('ya_voto_hype') === 'true') return;
+
+    // Sumamos el voto
+    votosHype[juegoSeleccionado]++;
+    
+    // Guardamos en la memoria local del navegador
+    if(juegoSeleccionado === 'minecraft') localStorage.setItem('voto_mc', votosHype.minecraft);
+    if(juegoSeleccionado === 'roblox') localStorage.setItem('voto_roblox', votosHype.roblox);
+    if(juegoSeleccionado === 'fortnite') localStorage.setItem('voto_fortnite', votosHype.fortnite);
+    if(juegoSeleccionado === 'lol') localStorage.setItem('voto_lol', votosHype.lol);
+    
+    // Bloqueamos al usuario para futuras votaciones
+    localStorage.setItem('ya_voto_hype', 'true');
+
+    // Refrescamos la interfaz gráfica
+    actualizarContadoresHype();
+}
+
+// TRUCO PARA EL DIRECTO: Si pones "reiniciarHype()" en la consola del navegador, se desbloquea para pruebas
+function reiniciarHype() {
+    localStorage.removeItem('ya_voto_hype');
+    location.reload();
+}
+
+// Ejecutamos la carga inicial apenas abre la web
+actualizarContadoresHype();
     </script>
 
 </body>
