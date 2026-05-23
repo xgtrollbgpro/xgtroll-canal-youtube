@@ -975,6 +975,8 @@
                 <a href="#slots-gamer">tragamonedas</a>
                 <a href="#quiz-gamer">Test</a>
                 <a href="#hype-gamer">juego del mes</a>
+                <a href="#chest-simulator">Cofres</a>
+                <a href="#trivia-gamer">Trivia</a>
             </div>
             </div>
         </div>
@@ -1022,22 +1024,7 @@
             </div>
         </div>
 
-<div class="game-section" id="minijuego">
-            <h2>🎮 Desafío Ta-Te-Ti</h2>
-            <div class="status-turn" id="game-status">Turno de: X</div>
-            <div class="board" id="game-board">
-                <div class="cell" onclick="makeMove(this, 0)"></div>
-                <div class="cell" onclick="makeMove(this, 1)"></div>
-                <div class="cell" onclick="makeMove(this, 2)"></div>
-                <div class="cell" onclick="makeMove(this, 3)"></div>
-                <div class="cell" onclick="makeMove(this, 4)"></div>
-                <div class="cell" onclick="makeMove(this, 5)"></div>
-                <div class="cell" onclick="makeMove(this, 6)"></div>
-                <div class="cell" onclick="makeMove(this, 7)"></div>
-                <div class="cell" onclick="makeMove(this, 8)"></div>
-            </div>
-            <button class="red-social" onclick="resetGame()">🔄 Reiniciar Juego</button>
-        </div>
+
         
 
         <!-- VIDEOS DESTACADOS -->
@@ -1449,6 +1436,55 @@
     </div>
 </div>
 
+<!-- TRIVIA MINECRAFT / FNAF -->
+<div class="game-section" id="trivia-gamer">
+    <h2>🧠 Trivia: Minecraft & FNAF</h2>
+    <p style="color:#a8dadc; margin-bottom:20px;">¿Cuánto sabés realmente? Poné a prueba tu conocimiento.</p>
+
+    <!-- Selector de categoría -->
+    <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-bottom:25px;">
+        <button class="red-social" id="btn-cat-minecraft" onclick="seleccionarCategoria('minecraft')">⛏️ Minecraft</button>
+        <button class="red-social" id="btn-cat-fnaf"      onclick="seleccionarCategoria('fnaf')">🐻 FNAF</button>
+        <button class="red-social" id="btn-cat-mixta"     onclick="seleccionarCategoria('mixta')">🎮 Mixta</button>
+    </div>
+
+    <!-- Panel del juego -->
+    <div id="trivia-juego" style="display:none;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; font-size:0.9em; color:#aaa;">
+            <span id="trivia-contador">Pregunta 1 de 10</span>
+            <span>✅ <span id="trivia-correctas">0</span> &nbsp; ❌ <span id="trivia-incorrectas">0</span></span>
+        </div>
+
+        <!-- Barra de progreso -->
+        <div style="background:rgba(255,255,255,0.1);border-radius:20px;height:8px;margin-bottom:20px;">
+            <div id="trivia-progreso" style="height:100%;background:linear-gradient(90deg,#e94560,#ff6b81);border-radius:20px;transition:width 0.4s;width:0%;"></div>
+        </div>
+
+        <div id="trivia-card" style="background:rgba(0,0,0,0.25); padding:25px; border-radius:12px;">
+            <div id="trivia-categoria-label" style="font-size:0.8em; color:#e94560; font-weight:bold; letter-spacing:2px; margin-bottom:10px;"></div>
+            <p id="trivia-pregunta" style="font-size:1.15em; font-weight:bold; color:#fff; line-height:1.5; margin-bottom:20px;"></p>
+            <div id="trivia-opciones" style="display:flex; flex-direction:column; gap:10px;"></div>
+            <div id="trivia-feedback" style="display:none; margin-top:18px; padding:14px; border-radius:10px; font-weight:bold; font-size:1em;"></div>
+            <button id="trivia-btn-siguiente" class="red-social" style="display:none; margin-top:15px;" onclick="siguientePregunta()">➡️ Siguiente</button>
+        </div>
+    </div>
+
+    <!-- Pantalla de inicio -->
+    <div id="trivia-inicio">
+        <p style="color:#aaa; margin-bottom:20px;">Elegí una categoría arriba y empezá.</p>
+        <button class="red-social" id="trivia-btn-empezar" style="display:none;" onclick="empezarTrivia()">▶️ Empezar Trivia</button>
+    </div>
+
+    <!-- Pantalla de resultado final -->
+    <div id="trivia-final" style="display:none; text-align:center; background:rgba(0,0,0,0.25); padding:30px; border-radius:12px;">
+        <div id="trivia-final-emoji" style="font-size:3.5em; margin-bottom:12px;"></div>
+        <div id="trivia-final-titulo" style="font-size:1.6em; font-weight:bold; margin-bottom:10px;"></div>
+        <div id="trivia-final-puntaje" style="font-size:1.1em; color:#a8dadc; margin-bottom:20px;"></div>
+        <div id="trivia-final-desc" style="color:#ccc; line-height:1.7; margin-bottom:25px;"></div>
+        <button class="red-social" onclick="reiniciarTrivia()">🔄 Jugar de nuevo</button>
+    </div>
+</div>
+
     <!-- GENERADOR DE NICKS GAMER -->
 <div class="biografia-section" id="generador-nicks">
     <h2>⚔️ Generador de Nicks Tryhard & Troll</h2>
@@ -1498,6 +1534,23 @@
     <div id="cps-resultado" style="margin-top: 15px; font-weight: bold; min-height: 25px;"></div>
 </div>
 
+<div class="game-section" id="minijuego">
+            <h2>🎮 Desafío Ta-Te-Ti</h2>
+            <div class="status-turn" id="game-status">Turno de: X</div>
+            <div class="board" id="game-board">
+                <div class="cell" onclick="makeMove(this, 0)"></div>
+                <div class="cell" onclick="makeMove(this, 1)"></div>
+                <div class="cell" onclick="makeMove(this, 2)"></div>
+                <div class="cell" onclick="makeMove(this, 3)"></div>
+                <div class="cell" onclick="makeMove(this, 4)"></div>
+                <div class="cell" onclick="makeMove(this, 5)"></div>
+                <div class="cell" onclick="makeMove(this, 6)"></div>
+                <div class="cell" onclick="makeMove(this, 7)"></div>
+                <div class="cell" onclick="makeMove(this, 8)"></div>
+            </div>
+            <button class="red-social" onclick="resetGame()">🔄 Reiniciar Juego</button>
+        </div>
+
 
 <!-- =============================================
             NUEVA SECCIÓN: TIER LIST INTERACTIVA
@@ -1540,6 +1593,35 @@
                 </div>
             </div>
         </div>
+
+        <!-- SIMULADOR DE CAJAS DE MINECRAFT -->
+<div class="game-section" id="chest-simulator">
+    <h2>📦 Simulador de Cofres de Minecraft</h2>
+    <p style="color:#a8dadc; margin-bottom:20px;">Elegí un cofre y fijate qué loot te toca hoy.</p>
+
+    <!-- Selector de tipo de cofre -->
+    <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-bottom:25px;">
+        <button class="red-social" onclick="seleccionarCofre('normal')"    id="btn-cofre-normal">📦 Normal</button>
+        <button class="red-social" onclick="seleccionarCofre('abandonado')" id="btn-cofre-abandonado">🕸️ Abandonado</button>
+        <button class="red-social" onclick="seleccionarCofre('nether')"    id="btn-cofre-nether">🔥 Nether</button>
+        <button class="red-social" onclick="seleccionarCofre('end')"       id="btn-cofre-end">🌌 End</button>
+        <button class="red-social" onclick="seleccionarCofre('aldea')"     id="btn-cofre-aldea">🏘️ Aldea</button>
+    </div>
+
+    <!-- Cofre animado -->
+    <div id="cofre-visual" style="font-size:5em; cursor:pointer; transition: transform 0.2s; display:inline-block; filter: drop-shadow(0 0 10px rgba(233,69,96,0.5));" onclick="abrirCofre()">📦</div>
+    <p id="cofre-tipo-label" style="color:#aaa; margin:8px 0 20px; font-size:0.9em;">Tipo: Normal</p>
+
+    <button class="red-social" id="btn-abrir-cofre" onclick="abrirCofre()">🔓 Abrir Cofre</button>
+
+    <!-- Resultado del loot -->
+    <div id="chest-resultado" style="display:none; margin-top:25px;">
+        <p style="color:#a8dadc; margin-bottom:15px; font-size:0.95em;">📋 Encontraste estos items:</p>
+        <div id="chest-items" style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px;"></div>
+        <div id="chest-rareza" style="margin-top:20px; font-size:1.2em; font-weight:bold;"></div>
+        <button class="red-social" style="margin-top:15px;" onclick="resetCofre()">🔄 Buscar otro cofre</button>
+    </div>
+</div>
 
     <!-- FOOTER -->
     <footer id="contacto">
@@ -2094,6 +2176,401 @@ function reiniciarHype() {
 
 // Ejecutamos la carga inicial apenas abre la web
 actualizarContadoresHype();
+
+// =============================================
+// SIMULADOR DE COFRES DE MINECRAFT
+// =============================================
+const lootTablas = {
+    normal: [
+        { item: "🪵 Madera x8",       rareza: "comun"    },
+        { item: "🍞 Pan x3",           rareza: "comun"    },
+        { item: "⛏️ Pico de Piedra",   rareza: "comun"    },
+        { item: "🪨 Piedra x16",       rareza: "comun"    },
+        { item: "🧱 Ladrillos x6",     rareza: "comun"    },
+        { item: "🍎 Manzana x2",       rareza: "comun"    },
+        { item: "⚔️ Espada de Hierro", rareza: "poco_comun" },
+        { item: "🛡️ Casco de Hierro",  rareza: "poco_comun" },
+        { item: "💣 TNT x2",           rareza: "poco_comun" },
+        { item: "🎣 Caña de Pescar",   rareza: "poco_comun" },
+        { item: "💎 Diamante x1",      rareza: "raro"     },
+        { item: "📖 Encantamiento",    rareza: "raro"     },
+        { item: "💎 Diamantes x3",     rareza: "epico"    },
+        { item: "🌟 Manzana Dorada",   rareza: "epico"    },
+        { item: "👑 Netherite Scrap",  rareza: "legendario" },
+    ],
+    abandonado: [
+        { item: "🕷️ Tela de Araña x4",   rareza: "comun"    },
+        { item: "🪨 Adoquín x12",         rareza: "comun"    },
+        { item: "🍖 Carne Podrida x2",    rareza: "comun"    },
+        { item: "🔩 Hierro x3",           rareza: "comun"    },
+        { item: "💣 TNT x4",              rareza: "poco_comun" },
+        { item: "🧲 Imán",               rareza: "poco_comun" },
+        { item: "💀 Hueso x8",            rareza: "poco_comun" },
+        { item: "⚗️ Poción de Veneno",    rareza: "raro"     },
+        { item: "💎 Diamante x2",         rareza: "raro"     },
+        { item: "📜 Mapa del Tesoro",     rareza: "raro"     },
+        { item: "🗡️ Espada Encantada",    rareza: "epico"    },
+        { item: "💎 Diamantes x5",        rareza: "epico"    },
+        { item: "👑 Manzana Dorada Enc.", rareza: "legendario" },
+    ],
+    nether: [
+        { item: "🔥 Varilla de Blaze x3", rareza: "comun"    },
+        { item: "🟠 Netherrack x16",      rareza: "comun"    },
+        { item: "🌋 Polvo de Magma x4",   rareza: "comun"    },
+        { item: "🍄 Hongo Carmesí x5",    rareza: "comun"    },
+        { item: "⛓️ Cadenas x4",          rareza: "poco_comun" },
+        { item: "🧱 Ladrillos Nether x8", rareza: "poco_comun" },
+        { item: "💎 Cuarzo x12",          rareza: "poco_comun" },
+        { item: "🔮 Ojo de Ender x2",     rareza: "raro"     },
+        { item: "🛡️ Armadura de Oro Enc.",rareza: "raro"     },
+        { item: "🌟 Lingote de Oro x6",   rareza: "raro"     },
+        { item: "⚡ Netherite Ingot x1",  rareza: "epico"    },
+        { item: "🗡️ Espada Netherite",    rareza: "legendario" },
+    ],
+    end: [
+        { item: "🌌 Endstone x12",         rareza: "comun"    },
+        { item: "👁️ Ojo de Ender x3",      rareza: "comun"    },
+        { item: "🎐 Perla de Ender x4",    rareza: "comun"    },
+        { item: "⬛ Obsidiana x8",         rareza: "poco_comun" },
+        { item: "🛡️ Armadura de Diamante", rareza: "poco_comun" },
+        { item: "🔮 Cristal de End x2",    rareza: "raro"     },
+        { item: "🐉 Escama de Dragón",     rareza: "raro"     },
+        { item: "⚡ Netherite Ingot x2",   rareza: "epico"    },
+        { item: "🗡️ Espada Netherite Enc.",rareza: "epico"    },
+        { item: "👑 Huevo de Dragón",      rareza: "legendario" },
+    ],
+    aldea: [
+        { item: "🌾 Trigo x8",            rareza: "comun"    },
+        { item: "🥕 Zanahoria x5",        rareza: "comun"    },
+        { item: "🥔 Papa x5",             rareza: "comun"    },
+        { item: "🍞 Pan x4",              rareza: "comun"    },
+        { item: "🔩 Hierro x4",           rareza: "poco_comun" },
+        { item: "⚔️ Espada de Hierro",    rareza: "poco_comun" },
+        { item: "📖 Libro Encantado",     rareza: "raro"     },
+        { item: "🌟 Manzana Dorada",      rareza: "raro"     },
+        { item: "💎 Diamante x2",         rareza: "epico"    },
+        { item: "👑 Totem de No Morir",   rareza: "legendario" },
+    ]
+};
+
+const rarezaConfig = {
+    comun:       { label: "Común",       color: "#aaa",    peso: 50 },
+    poco_comun:  { label: "Poco Común",  color: "#00c9a7", peso: 28 },
+    raro:        { label: "Raro",        color: "#3498db", peso: 14 },
+    epico:       { label: "Épico",       color: "#9b59b6", peso: 6  },
+    legendario:  { label: "Legendario",  color: "#f1c40f", peso: 2  }
+};
+
+let cofreSeleccionado = "normal";
+let cofreAbierto = false;
+
+function seleccionarCofre(tipo) {
+    if (cofreAbierto) return;
+    cofreSeleccionado = tipo;
+
+    // Resetear estilos de botones
+    ["normal","abandonado","nether","end","aldea"].forEach(t => {
+        const b = document.getElementById("btn-cofre-" + t);
+        if (b) { b.style.opacity = "0.5"; b.style.transform = ""; }
+    });
+    const btnActivo = document.getElementById("btn-cofre-" + tipo);
+    if (btnActivo) { btnActivo.style.opacity = "1"; btnActivo.style.transform = "scale(1.05)"; }
+
+    const emojis   = { normal:"📦", abandonado:"🕸️📦", nether:"🔥📦", end:"🌌📦", aldea:"🏘️📦" };
+    const etiquetas = { normal:"Normal", abandonado:"Abandonado", nether:"Nether Fortress", end:"End City", aldea:"Aldea" };
+    document.getElementById("cofre-visual").innerText       = emojis[tipo];
+    document.getElementById("cofre-tipo-label").innerText   = "Tipo: " + etiquetas[tipo];
+}
+
+function pesoPorRareza(item) {
+    return rarezaConfig[item.rareza].peso;
+}
+
+function elegirItemPesado(tabla) {
+    const totalPeso = tabla.reduce((s, i) => s + pesoPorRareza(i), 0);
+    let rand = Math.random() * totalPeso;
+    for (const item of tabla) {
+        rand -= pesoPorRareza(item);
+        if (rand <= 0) return item;
+    }
+    return tabla[tabla.length - 1];
+}
+
+function abrirCofre() {
+    if (cofreAbierto) return;
+    cofreAbierto = true;
+
+    const cofre = document.getElementById("cofre-visual");
+    cofre.style.transform = "scale(1.3) rotate(-5deg)";
+    setTimeout(() => { cofre.innerText = "📂"; cofre.style.transform = "scale(1)"; }, 300);
+
+    const tabla = lootTablas[cofreSeleccionado];
+    const cantItems = 3 + Math.floor(Math.random() * 3); // entre 3 y 5 items
+    const itemsObtenidos = [];
+    for (let i = 0; i < cantItems; i++) {
+        itemsObtenidos.push(elegirItemPesado(tabla));
+    }
+
+    // Rareza más alta obtenida
+    const orden = ["comun","poco_comun","raro","epico","legendario"];
+    const mejorRareza = itemsObtenidos.reduce((mejor, item) => {
+        return orden.indexOf(item.rareza) > orden.indexOf(mejor) ? item.rareza : mejor;
+    }, "comun");
+
+    const cfg = rarezaConfig[mejorRareza];
+
+    // Renderizar items
+    const itemsDiv = document.getElementById("chest-items");
+    itemsDiv.innerHTML = "";
+    itemsObtenidos.forEach(item => {
+        const rc = rarezaConfig[item.rareza];
+        itemsDiv.innerHTML += `
+            <div style="background:rgba(0,0,0,0.3); border:2px solid ${rc.color}; border-radius:10px; padding:12px 16px; min-width:140px;">
+                <div style="font-size:1.1em; font-weight:bold;">${item.item}</div>
+                <div style="font-size:0.75em; color:${rc.color}; margin-top:4px;">★ ${rc.label}</div>
+            </div>`;
+    });
+
+    // Mensaje de rareza general
+    const mensajes = {
+        comun:      "😐 Loot normalito... la próxima mejor.",
+        poco_comun: "👍 No está nada mal ese loot.",
+        raro:       "😮 ¡Buen loot! Tuviste suerte.",
+        epico:      "🔥 ¡ÉPICO! ¡Ese cofre valió la pena!",
+        legendario: "👑 ¡¡LEGENDARIO!! ¡Ganaste la vida!"
+    };
+    document.getElementById("chest-rareza").innerHTML =
+        `<span style="color:${cfg.color}">${mensajes[mejorRareza]}</span>`;
+
+    document.getElementById("chest-resultado").style.display = "block";
+    document.getElementById("btn-abrir-cofre").style.display = "none";
+}
+
+function resetCofre() {
+    cofreAbierto = false;
+    document.getElementById("chest-resultado").style.display = "none";
+    document.getElementById("btn-abrir-cofre").style.display = "inline-block";
+    document.getElementById("cofre-visual").innerText = "📦";
+    document.getElementById("cofre-tipo-label").innerText = "Tipo: Normal";
+    cofreSeleccionado = "normal";
+    ["normal","abandonado","nether","end","aldea"].forEach(t => {
+        const b = document.getElementById("btn-cofre-" + t);
+        if (b) { b.style.opacity = "0.5"; b.style.transform = ""; }
+    });
+    const btnNormal = document.getElementById("btn-cofre-normal");
+    if (btnNormal) { btnNormal.style.opacity = "1"; }
+}
+
+// Inicializar botón normal como activo
+(function(){ 
+    const b = document.getElementById("btn-cofre-normal");
+    if(b) { 
+        ["normal","abandonado","nether","end","aldea"].forEach(t => {
+            const btn = document.getElementById("btn-cofre-" + t);
+            if(btn) btn.style.opacity = "0.5";
+        });
+        b.style.opacity = "1"; 
+    }
+})();
+// =============================================
+// TRIVIA MINECRAFT / FNAF
+// =============================================
+const preguntasTrivia = {
+    minecraft: [
+        { p: "¿Cuántos bloques de diamante necesitás para hacer una espada de diamante?", ops: ["1","2","3","4"], r: 1, exp: "Una espada necesita 2 diamantes y 1 palo." },
+        { p: "¿Qué mob explota si te acercás demasiado?", ops: ["Zombie","Creeper","Enderman","Esqueleto"], r: 1, exp: "El Creeper explota cuando se acerca al jugador." },
+        { p: "¿Cuál es el bioma más raro de Minecraft?", ops: ["Desierto","Jungla de bambú","Hongos (Mushroom)","Tundra"], r: 2, exp: "El bioma de Hongos (Mushroom Island) es el más raro." },
+        { p: "¿Qué necesitás para ir al Nether?", ops: ["Portal de End","Portal de Nether","Cama","Brújula"], r: 1, exp: "Un portal hecho de obsidiana te lleva al Nether." },
+        { p: "¿Qué animal da lana en Minecraft?", ops: ["Vaca","Cerdo","Oveja","Pollo"], r: 2, exp: "Las ovejas dropean lana al morir o al esquilarlas." },
+        { p: "¿Cuántos corazones tiene el Dragón del Ender por defecto?", ops: ["100","150","200","50"], r: 2, exp: "El Ender Dragon tiene 200 puntos de vida (100 corazones)." },
+        { p: "¿Qué bloque no puede destruir ni la explosión del Wither?", ops: ["Obsidiana","Piedra","Hierro","Diamante en bloque"], r: 0, exp: "La obsidiana tiene la mayor resistencia a explosiones." },
+        { p: "¿Con qué material se hace la armadura más resistente del juego?", ops: ["Diamante","Hierro","Netherite","Oro"], r: 2, exp: "La armadura de Netherite es la más fuerte y resiste la lava." },
+        { p: "¿Qué item necesitás para domesticar a un lobo?", ops: ["Hueso","Carne","Pan","Pez"], r: 0, exp: "Los lobos se domestican dándoles huesos." },
+        { p: "¿Qué estructura solo aparece en el océano profundo?", ops: ["Fortaleza","Monumento Oceánico","Templo del Desierto","Mansión del Bosque"], r: 1, exp: "El Monumento Oceánico aparece en océanos profundos." },
+    ],
+    fnaf: [
+        { p: "¿Cuál es el nombre del animatrónico principal de FNAF 1?", ops: ["Bonnie","Freddy Fazbear","Chica","Foxy"], r: 1, exp: "Freddy Fazbear es la mascota principal de la pizzería." },
+        { p: "¿En qué FNAF aparece Nightmare Fredbear por primera vez?", ops: ["FNAF 2","FNAF 3","FNAF 4","FNAF Sister Location"], r: 2, exp: "Nightmare Fredbear es el antagonista principal de FNAF 4." },
+        { p: "¿Cómo se llama el guardia de seguridad de FNAF 1?", ops: ["Michael Afton","Phone Guy","Mike Schmidt","Jeremy Fitzgerald"], r: 2, exp: "El nombre del guardia de FNAF 1 es Mike Schmidt." },
+        { p: "¿Qué animatrónico está ubicado en la Pirate Cove en FNAF 1?", ops: ["Bonnie","Chica","Foxy","Freddy"], r: 2, exp: "Foxy está escondido en Pirate Cove y corre por el pasillo izquierdo." },
+        { p: "¿Quién es el principal villano humano de toda la saga FNAF?", ops: ["Phone Guy","Purple Guy / William Afton","Mike Schmidt","Henry Emily"], r: 1, exp: "William Afton (el Purple Guy) es el asesino detrás de toda la historia." },
+        { p: "¿En qué juego aparece Baby (Circus Baby) por primera vez?", ops: ["FNAF 3","FNAF 4","FNAF Sister Location","FNAF 6"], r: 2, exp: "Circus Baby debuta en Five Nights at Freddy's: Sister Location." },
+        { p: "¿Cuántos animatrónicos originales hay en FNAF 1?", ops: ["3","4","5","6"], r: 1, exp: "Freddy, Bonnie, Chica y Foxy son los 4 animatrónicos originales." },
+        { p: "¿Qué técnica usás en FNAF 1 para frenar a Freddy?", ops: ["Cerrar la puerta","Mirar la cámara del escenario","Apagar las luces","Usar el ventilador"], r: 1, exp: "Mirar la cámara del escenario principal frena a Freddy." },
+        { p: "¿Cómo se llama el mini-juego oculto donde aparece el Purple Guy?", ops: ["Foxy Go! Go! Go!","SAVE THEM","Candy Cadet","Mangle's Quest"], r: 1, exp: "En 'SAVE THEM' se ve al Purple Guy matando niños." },
+        { p: "¿En qué FNAF trabajás en una pizzería llamada 'Freddy Fazbear's Pizza Place' para desmantelar animatrónicos?", ops: ["FNAF 5","FNAF 6 / Pizzeria Simulator","FNAF 4","Ultimate Custom Night"], r: 1, exp: "En FNAF 6 (Freddy Fazbear's Pizzeria Simulator) desmantelás o salvás animatrónicos." },
+    ]
+};
+
+// Mixta = mezcla de las dos
+preguntasTrivia.mixta = [
+    ...preguntasTrivia.minecraft.slice(0,5),
+    ...preguntasTrivia.fnaf.slice(0,5)
+];
+
+const categoriasLabel = { minecraft: "⛏️ MINECRAFT", fnaf: "🐻 FNAF", mixta: "🎮 MIXTA" };
+
+let triviaCategoria    = null;
+let triviaPreguntaList = [];
+let triviaIdx          = 0;
+let triviaCorrectas    = 0;
+let triviaIncorrectas  = 0;
+let triviaRespondida   = false;
+
+function seleccionarCategoria(cat) {
+    triviaCategoria = cat;
+    ["minecraft","fnaf","mixta"].forEach(c => {
+        const b = document.getElementById("btn-cat-" + c);
+        if (b) b.style.opacity = c === cat ? "1" : "0.5";
+    });
+    document.getElementById("trivia-btn-empezar").style.display = "inline-block";
+}
+
+function empezarTrivia() {
+    if (!triviaCategoria) return;
+
+    // Mezclar preguntas
+    const pool = [...preguntasTrivia[triviaCategoria]];
+    for (let i = pool.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [pool[i], pool[j]] = [pool[j], pool[i]];
+    }
+    triviaPreguntaList = pool.slice(0, 10);
+    triviaIdx = 0; triviaCorrectas = 0; triviaIncorrectas = 0;
+
+    document.getElementById("trivia-inicio").style.display = "none";
+    document.getElementById("trivia-final").style.display  = "none";
+    document.getElementById("trivia-juego").style.display  = "block";
+    mostrarPreguntaTrivia();
+}
+
+function mostrarPreguntaTrivia() {
+    triviaRespondida = false;
+    const q = triviaPreguntaList[triviaIdx];
+
+    document.getElementById("trivia-contador").textContent  = `Pregunta ${triviaIdx + 1} de ${triviaPreguntaList.length}`;
+    document.getElementById("trivia-correctas").textContent = triviaCorrectas;
+    document.getElementById("trivia-incorrectas").textContent = triviaIncorrectas;
+    document.getElementById("trivia-progreso").style.width  = (triviaIdx / triviaPreguntaList.length * 100) + "%";
+    document.getElementById("trivia-categoria-label").textContent = categoriasLabel[triviaCategoria];
+    document.getElementById("trivia-pregunta").textContent  = q.p;
+    document.getElementById("trivia-feedback").style.display = "none";
+    document.getElementById("trivia-btn-siguiente").style.display = "none";
+
+    const cont = document.getElementById("trivia-opciones");
+    cont.innerHTML = "";
+    q.ops.forEach((op, i) => {
+        const btn = document.createElement("button");
+        btn.className = "red-social";
+        btn.style.cssText = "text-align:left; background:rgba(255,255,255,0.05); border:2px solid rgba(233,69,96,0.25); color:#ddd;";
+        btn.innerHTML = `<b style="color:#e94560">${["A","B","C","D"][i]})</b> ${op}`;
+        btn.onclick = () => responderTrivia(i, btn);
+        cont.appendChild(btn);
+    });
+}
+
+function responderTrivia(idx, btnClickeado) {
+    if (triviaRespondida) return;
+    triviaRespondida = true;
+
+    const q = triviaPreguntaList[triviaIdx];
+    const correcta = idx === q.r;
+    if (correcta) triviaCorrectas++; else triviaIncorrectas++;
+
+    // Colorear botones
+    document.querySelectorAll("#trivia-opciones button").forEach((btn, i) => {
+        btn.disabled = true;
+        if (i === q.r) {
+            btn.style.background = "rgba(0,201,167,0.25)";
+            btn.style.borderColor = "#00c9a7";
+            btn.style.color = "#fff";
+        } else if (i === idx && !correcta) {
+            btn.style.background = "rgba(233,69,96,0.25)";
+            btn.style.borderColor = "#e94560";
+        } else {
+            btn.style.opacity = "0.4";
+        }
+    });
+
+    // Feedback
+    const fb = document.getElementById("trivia-feedback");
+    fb.style.display = "block";
+    if (correcta) {
+        fb.style.background = "rgba(0,201,167,0.15)";
+        fb.style.border = "1px solid #00c9a7";
+        fb.style.color = "#00c9a7";
+        fb.innerHTML = `✅ ¡Correcto! ${q.exp}`;
+    } else {
+        fb.style.background = "rgba(233,69,96,0.15)";
+        fb.style.border = "1px solid #e94560";
+        fb.style.color = "#e94560";
+        fb.innerHTML = `❌ Incorrecto. ${q.exp}`;
+    }
+
+    document.getElementById("trivia-correctas").textContent   = triviaCorrectas;
+    document.getElementById("trivia-incorrectas").textContent = triviaIncorrectas;
+    document.getElementById("trivia-btn-siguiente").style.display = "inline-block";
+}
+
+function siguientePregunta() {
+    triviaIdx++;
+    if (triviaIdx < triviaPreguntaList.length) {
+        mostrarPreguntaTrivia();
+    } else {
+        mostrarResultadoTrivia();
+    }
+}
+
+function mostrarResultadoTrivia() {
+    document.getElementById("trivia-juego").style.display  = "none";
+    document.getElementById("trivia-final").style.display  = "block";
+    document.getElementById("trivia-progreso").style.width = "100%";
+
+    const pct = (triviaCorrectas / triviaPreguntaList.length) * 100;
+    let emoji, titulo, desc, color;
+
+    if (pct === 100) {
+        emoji = "👑"; titulo = "¡Leyenda Absoluta!"; color = "#f1c40f";
+        desc = "Respondiste todo perfecto. Sos un dios del gaming. Xgtroll te contrataría de manager.";
+    } else if (pct >= 70) {
+        emoji = "🔥"; titulo = "¡Muy Buen Gamer!"; color = "#00c9a7";
+        desc = "Sabés bastante. Con un poco más de práctica llegás al 100%.";
+    } else if (pct >= 40) {
+        emoji = "😐"; titulo = "Gamer Promedio"; color = "#3498db";
+        desc = "Mitad y mitad. Necesitás volver a ver los videos del canal para mejorar.";
+    } else {
+        emoji = "💀"; titulo = "¿Jugaste alguna vez?"; color = "#e94560";
+        desc = "Eso fue... malo. Pero tranquilo, para eso está el canal de Xgtroll. ¡A estudiar!";
+    }
+
+    document.getElementById("trivia-final-emoji").textContent  = emoji;
+    document.getElementById("trivia-final-titulo").textContent = titulo;
+    document.getElementById("trivia-final-titulo").style.color = color;
+    document.getElementById("trivia-final-puntaje").textContent = `${triviaCorrectas} correctas de ${triviaPreguntaList.length}`;
+    document.getElementById("trivia-final-desc").textContent   = desc;
+}
+
+function reiniciarTrivia() {
+    triviaCategoria = null;
+    document.getElementById("trivia-final").style.display  = "none";
+    document.getElementById("trivia-juego").style.display  = "none";
+    document.getElementById("trivia-inicio").style.display = "block";
+    document.getElementById("trivia-btn-empezar").style.display = "none";
+    document.getElementById("trivia-progreso").style.width = "0%";
+    ["minecraft","fnaf","mixta"].forEach(c => {
+        const b = document.getElementById("btn-cat-" + c);
+        if (b) b.style.opacity = "0.5";
+    });
+}
+
+// Inicializar opacidad de categorías
+(function(){
+    ["minecraft","fnaf","mixta"].forEach(c => {
+        const b = document.getElementById("btn-cat-" + c);
+        if (b) b.style.opacity = "0.5";
+    });
+})();
+
     </script>
 
 </body>
