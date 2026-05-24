@@ -210,6 +210,27 @@
             margin-top: 40px;
             font-style: italic;
         }
+
+
+        /* BOTONES DEL GENERADOR */
+.btn-gen {
+    padding: 11px 20px;
+    background-color: #8B4513;
+    color: #FFF8DC;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95em;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+.btn-gen:hover {
+    background-color: #5C4817;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139,69,19,0.35);
+}
+
     </style>
 </head>
 <body>
@@ -357,6 +378,390 @@
                 </div>
             </div>
         </div>
+
+        <!-- GENERADOR DE NOMBRES PARA PERRO SALCHICHA -->
+<div class="seccion" id="generador-nombres">
+    <h2>🏷️ Generador de Nombres para tu Salchicha</h2>
+    <p>Contestá estas preguntas y te sugerimos el nombre perfecto para tu perro.</p>
+
+    <!-- Paso 1: Sexo -->
+    <div id="gen-paso1" style="margin-top:20px;">
+        <p style="font-weight:bold; color:#8B4513; margin-bottom:12px;">¿Tu perro es macho o hembra?</p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <button class="btn-gen" onclick="elegirSexo('macho')">🐾 Macho</button>
+            <button class="btn-gen" onclick="elegirSexo('hembra')">🌸 Hembra</button>
+        </div>
+    </div>
+
+    <!-- Paso 2: Pelaje -->
+    <div id="gen-paso2" style="display:none; margin-top:20px;">
+        <p style="font-weight:bold; color:#8B4513; margin-bottom:12px;">¿De qué color es su pelaje?</p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <button class="btn-gen" onclick="elegirPelaje('marron')">🟫 Marrón</button>
+            <button class="btn-gen" onclick="elegirPelaje('negro')">⬛ Negro</button>
+            <button class="btn-gen" onclick="elegirPelaje('dorado')">🟡 Dorado / Rubio</button>
+            <button class="btn-gen" onclick="elegirPelaje('manchado')">🔘 Manchado</button>
+        </div>
+    </div>
+
+    <!-- Paso 3: Personalidad -->
+    <div id="gen-paso3" style="display:none; margin-top:20px;">
+        <p style="font-weight:bold; color:#8B4513; margin-bottom:12px;">¿Cómo es su personalidad?</p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <button class="btn-gen" onclick="elegirPersonalidad('travieso')">😈 Travieso</button>
+            <button class="btn-gen" onclick="elegirPersonalidad('tierno')">🥰 Tierno y tranquilo</button>
+            <button class="btn-gen" onclick="elegirPersonalidad('energico')">⚡ Muy energético</button>
+            <button class="btn-gen" onclick="elegirPersonalidad('glotón')">🍖 Glotón</button>
+        </div>
+    </div>
+
+    <!-- Resultado -->
+    <div id="gen-resultado" style="display:none; margin-top:25px; text-align:center; background:rgba(139,69,19,0.08); border:2px dashed #8B4513; border-radius:12px; padding:25px;">
+        <p style="font-size:0.9em; color:#888; margin-bottom:8px;">✨ El nombre perfecto para tu salchicha es...</p>
+        <div id="gen-nombre-principal" style="font-size:2.5em; font-weight:bold; color:#8B4513; margin-bottom:6px;"></div>
+        <div id="gen-nombre-secundario" style="font-size:1em; color:#888; margin-bottom:15px;"></div>
+        <div id="gen-razon" style="font-size:1em; color:#555; font-style:italic; margin-bottom:20px; line-height:1.6;"></div>
+        <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+            <button class="btn-gen" onclick="otroNombre()">🎲 Otro nombre</button>
+            <button class="btn-gen" onclick="reiniciarGenerador()" style="background:#D2B48C;">🔄 Empezar de nuevo</button>
+        </div>
+    </div>
+</div>
+
+<!-- TRIVIA PERROS SALCHICHA -->
+<div class="seccion" id="trivia-salchicha">
+    <h2>🧠 Trivia: ¿Cuánto sabés de los Dachshunds?</h2>
+    <p style="margin-bottom:20px;">Poné a prueba tu conocimiento sobre la raza más alargada del mundo.</p>
+
+    <!-- Pantalla de inicio -->
+    <div id="trivia-s-inicio" style="text-align:center; padding:20px 0;">
+        <div style="font-size:4em; margin-bottom:15px;">🐕</div>
+        <p style="color:#8B4513; font-weight:bold; font-size:1.1em; margin-bottom:8px;">10 preguntas sobre historia, cuidados y curiosidades</p>
+        <p style="color:#888; margin-bottom:25px; font-size:0.95em;">¿Sos un verdadero experto en salchichas?</p>
+        <button class="btn-gen" onclick="empezarTriviaS()">▶️ Empezar Trivia</button>
+    </div>
+
+    <!-- Panel del juego -->
+    <div id="trivia-s-juego" style="display:none;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; font-size:0.9em; color:#888;">
+            <span id="trivia-s-contador">Pregunta 1 de 10</span>
+            <span>✅ <span id="trivia-s-correctas">0</span> &nbsp;❌ <span id="trivia-s-incorrectas">0</span></span>
+        </div>
+
+        <!-- Barra de progreso -->
+        <div style="background:#D2B48C; border-radius:20px; height:8px; margin-bottom:20px;">
+            <div id="trivia-s-progreso" style="height:100%; background:#8B4513; border-radius:20px; transition:width 0.4s; width:0%;"></div>
+        </div>
+
+        <div style="background:rgba(139,69,19,0.07); padding:25px; border-radius:12px;">
+            <div id="trivia-s-categoria" style="font-size:0.8em; color:#8B4513; font-weight:bold; letter-spacing:2px; margin-bottom:10px;"></div>
+            <p id="trivia-s-pregunta" style="font-size:1.15em; font-weight:bold; color:#333; line-height:1.5; margin-bottom:20px;"></p>
+            <div id="trivia-s-opciones" style="display:flex; flex-direction:column; gap:10px;"></div>
+            <div id="trivia-s-feedback" style="display:none; margin-top:18px; padding:14px; border-radius:10px; font-size:0.95em; line-height:1.6;"></div>
+            <button id="trivia-s-btn-sig" class="btn-gen" style="display:none; margin-top:15px;" onclick="siguientePreguntaS()">➡️ Siguiente</button>
+        </div>
+    </div>
+
+    <!-- Pantalla de resultado final -->
+    <div id="trivia-s-final" style="display:none; text-align:center; background:rgba(139,69,19,0.07); padding:30px; border-radius:12px;">
+        <div id="trivia-s-final-emoji" style="font-size:3.5em; margin-bottom:12px;"></div>
+        <div id="trivia-s-final-titulo" style="font-size:1.6em; font-weight:bold; margin-bottom:10px;"></div>
+        <div id="trivia-s-final-puntaje" style="font-size:1.1em; color:#8B4513; margin-bottom:15px;"></div>
+        <div id="trivia-s-final-desc" style="color:#555; line-height:1.7; margin-bottom:25px;"></div>
+        <button class="btn-gen" onclick="reiniciarTriviaS()">🔄 Jugar de nuevo</button>
+    </div>
+</div>
+
+<script>
+    // =============================================
+// GENERADOR DE NOMBRES PARA PERRO SALCHICHA
+// =============================================
+const nombresDB = {
+    macho: {
+        marron:   { principal: "Bruno",   alternos: ["Cacao","Moka","Castaño"],  razon: "Marrón y macho: un nombre sólido y cálido como su pelaje." },
+        negro:    { principal: "Carbón",  alternos: ["Shadow","Noche","Óscar"],  razon: "Negro y macho: misterioso y elegante, como él." },
+        dorado:   { principal: "Rubio",   alternos: ["Sol","Trigo","Dorado"],    razon: "Dorado y macho: luminoso como su pelaje y su energía." },
+        manchado: { principal: "Parche",  alternos: ["Manchas","Dálmata","Pincel"], razon: "Manchado y macho: único e irrepetible, igual que sus manchas." }
+    },
+    hembra: {
+        marron:   { principal: "Canela",  alternos: ["Nutella","Miel","Caramelo"], razon: "Marrón y hembra: dulce y cálida como su color de pelaje." },
+        negro:    { principal: "Noche",   alternos: ["Luna","Mora","Azabache"],    razon: "Negra y hembra: elegante y misteriosa, con mucha personalidad." },
+        dorado:   { principal: "Miel",    alternos: ["Rubia","Dorita","Camomila"], razon: "Dorada y hembra: suave y preciosa, como el color de su pelaje." },
+        manchado: { principal: "Pecas",   alternos: ["Manchitas","Lunares","Pinta"], razon: "Manchada y hembra: juguetona y original, igual que su pelaje." }
+    }
+};
+
+const personalidadExtra = {
+    travieso:  { sufijo: " 😈", extra: "Y siendo travieso/a, ese nombre le queda perfecto para el caos que genera." },
+    tierno:    { sufijo: " 🥰", extra: "Con esa personalidad tierna, el nombre le da un toque dulce irresistible." },
+    energico:  { sufijo: " ⚡", extra: "¡Con tanta energía, ese nombre lo/la va a representar siempre en movimiento!" },
+    "glotón":  { sufijo: " 🍖", extra: "Siendo tan glotón/a, ese nombre le va como anillo al dedo (o la morcilla al plato)." }
+};
+
+let genSexo = null;
+let genPelaje = null;
+let genPersonalidad = null;
+let genNombresUsados = [];
+
+function elegirSexo(sexo) {
+    genSexo = sexo;
+    document.getElementById("gen-paso1").style.display = "none";
+    document.getElementById("gen-paso2").style.display = "block";
+}
+
+function elegirPelaje(pelaje) {
+    genPelaje = pelaje;
+    document.getElementById("gen-paso2").style.display = "none";
+    document.getElementById("gen-paso3").style.display = "block";
+}
+
+function elegirPersonalidad(personalidad) {
+    genPersonalidad = personalidad;
+    document.getElementById("gen-paso3").style.display = "none";
+    mostrarNombreGenerado();
+}
+
+function mostrarNombreGenerado() {
+    const datos = nombresDB[genSexo][genPelaje];
+    const extra = personalidadExtra[genPersonalidad];
+
+    // Elegir entre principal y alternos, evitando repetir
+    const todos = [datos.principal, ...datos.alternos];
+    const disponibles = todos.filter(n => !genNombresUsados.includes(n));
+    const pool = disponibles.length > 0 ? disponibles : todos;
+    const nombre = pool[Math.floor(Math.random() * pool.length)];
+    genNombresUsados.push(nombre);
+
+    document.getElementById("gen-nombre-principal").textContent = nombre + extra.sufijo;
+    document.getElementById("gen-nombre-secundario").textContent =
+        "También puede ser: " + datos.alternos.filter(n => n !== nombre).join(", ");
+    document.getElementById("gen-razon").textContent = datos.razon + " " + extra.extra;
+    document.getElementById("gen-resultado").style.display = "block";
+}
+
+function otroNombre() {
+    mostrarNombreGenerado();
+}
+
+function reiniciarGenerador() {
+    genSexo = null; genPelaje = null; genPersonalidad = null; genNombresUsados = [];
+    document.getElementById("gen-resultado").style.display = "none";
+    document.getElementById("gen-paso2").style.display = "none";
+    document.getElementById("gen-paso3").style.display = "none";
+    document.getElementById("gen-paso1").style.display = "block";
+}
+
+// =============================================
+// TRIVIA PERROS SALCHICHA
+// =============================================
+const preguntasSalchicha = [
+    {
+        cat: "📜 HISTORIA",
+        p: "¿De qué país es originario el perro salchicha?",
+        ops: ["Francia","Inglaterra","Alemania","Austria"],
+        r: 2,
+        exp: "El Dachshund es originario de Alemania. Su nombre significa 'perro tejón' en alemán."
+    },
+    {
+        cat: "📜 HISTORIA",
+        p: "¿Para qué fueron criados originalmente los perros salchicha?",
+        ops: ["Perros de compañía","Cazar tejones en madrigueras","Pastorear ovejas","Perros guardianes"],
+        r: 1,
+        exp: "Fueron criados para meterse en las madrigueras y cazar tejones, gracias a su cuerpo alargado y patas cortas."
+    },
+    {
+        cat: "🏥 SALUD",
+        p: "¿Qué problema de salud es más común en los perros salchicha debido a su forma?",
+        ops: ["Problemas de corazón","Problemas de columna y espalda","Problemas de visión","Problemas renales"],
+        r: 1,
+        exp: "Su columna larga los hace propensos a hernias de disco y problemas de espalda. Es importante cuidar su peso."
+    },
+    {
+        cat: "🏥 SALUD",
+        p: "¿Cuál es la esperanza de vida promedio de un perro salchicha?",
+        ops: ["5 a 8 años","8 a 10 años","12 a 16 años","18 a 20 años"],
+        r: 2,
+        exp: "Los salchichas viven entre 12 y 16 años, siendo una de las razas más longevas."
+    },
+    {
+        cat: "🎨 CARACTERÍSTICAS",
+        p: "¿Cuántos tipos de pelaje tiene el perro salchicha?",
+        ops: ["1","2","3","4"],
+        r: 2,
+        exp: "Existen 3 tipos de pelaje: corto, largo y de alambre (wire)."
+    },
+    {
+        cat: "🎨 CARACTERÍSTICAS",
+        p: "¿Cuántas variedades de tamaño existen en la raza?",
+        ops: ["Solo uno","Dos: estándar y miniatura","Tres: toy, miniatura y estándar","Cuatro tamaños distintos"],
+        r: 1,
+        exp: "Existen dos tamaños oficiales: estándar (7-14 kg) y miniatura (hasta 3.5 kg)."
+    },
+    {
+        cat: "🧠 CURIOSIDADES",
+        p: "¿Qué presidente de EE.UU. tuvo un famoso perro salchicha llamado 'Him and Her'?",
+        ops: ["John F. Kennedy","Franklin Roosevelt","Lyndon B. Johnson","Richard Nixon"],
+        r: 2,
+        exp: "Lyndon B. Johnson tuvo dos salchichas famosos llamados 'Him' y 'Her' que vivían en la Casa Blanca."
+    },
+    {
+        cat: "🧠 CURIOSIDADES",
+        p: "¿En qué país el perro salchicha fue mascota oficial de los Juegos Olímpicos de 1972?",
+        ops: ["Estados Unidos","Japón","Alemania","Italia"],
+        r: 2,
+        exp: "En los Juegos Olímpicos de Múnich 1972 (Alemania), la mascota oficial fue un salchicha llamado Waldi."
+    },
+    {
+        cat: "🍖 CUIDADOS",
+        p: "¿Qué actividad es especialmente importante evitar en los perros salchicha para proteger su espalda?",
+        ops: ["Nadar","Saltar desde lugares altos","Correr en el parque","Jugar con pelotas"],
+        r: 1,
+        exp: "Saltar desde sofás, camas o escaleras puede dañar gravemente su columna vertebral."
+    },
+    {
+        cat: "🍖 CUIDADOS",
+        p: "¿Qué característica heredada de sus antepasados cazadores todavía tienen hoy los salchichas?",
+        ops: ["Les encanta nadar","Instinto de cavar y excavar","Son completamente silenciosos","Cazan pájaros"],
+        r: 1,
+        exp: "El instinto de cavar es muy fuerte en esta raza, heredado de cuando cazaban en madrigueras."
+    }
+];
+
+let triviaSIdx = 0;
+let triviaSCorrectas = 0;
+let triviaSIncorrectas = 0;
+let triviaSRespondida = false;
+let triviaSLista = [];
+
+function empezarTriviaS() {
+    // Mezclar preguntas
+    triviaSLista = [...preguntasSalchicha];
+    for (let i = triviaSLista.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [triviaSLista[i], triviaSLista[j]] = [triviaSLista[j], triviaSLista[i]];
+    }
+    triviaSIdx = 0; triviaSCorrectas = 0; triviaSIncorrectas = 0;
+
+    document.getElementById("trivia-s-inicio").style.display = "none";
+    document.getElementById("trivia-s-final").style.display  = "none";
+    document.getElementById("trivia-s-juego").style.display  = "block";
+    mostrarPreguntaS();
+}
+
+function mostrarPreguntaS() {
+    triviaSRespondida = false;
+    const q = triviaSLista[triviaSIdx];
+
+    document.getElementById("trivia-s-contador").textContent    = `Pregunta ${triviaSIdx + 1} de ${triviaSLista.length}`;
+    document.getElementById("trivia-s-correctas").textContent   = triviaSCorrectas;
+    document.getElementById("trivia-s-incorrectas").textContent = triviaSIncorrectas;
+    document.getElementById("trivia-s-progreso").style.width    = (triviaSIdx / triviaSLista.length * 100) + "%";
+    document.getElementById("trivia-s-categoria").textContent   = q.cat;
+    document.getElementById("trivia-s-pregunta").textContent    = q.p;
+    document.getElementById("trivia-s-feedback").style.display  = "none";
+    document.getElementById("trivia-s-btn-sig").style.display   = "none";
+
+    const cont = document.getElementById("trivia-s-opciones");
+    cont.innerHTML = "";
+    q.ops.forEach((op, i) => {
+        const btn = document.createElement("button");
+        btn.className = "btn-gen";
+        btn.style.cssText = "text-align:left; background:#D2B48C; color:#333; border:2px solid transparent; width:100%;";
+        btn.innerHTML = `<b style="color:#8B4513">${["A","B","C","D"][i]})</b> ${op}`;
+        btn.onclick = () => responderTriviaS(i);
+        cont.appendChild(btn);
+    });
+}
+
+function responderTriviaS(idx) {
+    if (triviaSRespondida) return;
+    triviaSRespondida = true;
+
+    const q = triviaSLista[triviaSIdx];
+    const correcta = idx === q.r;
+    if (correcta) triviaSCorrectas++; else triviaSIncorrectas++;
+
+    // Colorear botones
+    document.querySelectorAll("#trivia-s-opciones button").forEach((btn, i) => {
+        btn.disabled = true;
+        if (i === q.r) {
+            btn.style.background = "#c8f0c8";
+            btn.style.borderColor = "#2ecc71";
+        } else if (i === idx && !correcta) {
+            btn.style.background = "#f5c6c6";
+            btn.style.borderColor = "#e74c3c";
+        } else {
+            btn.style.opacity = "0.45";
+        }
+    });
+
+    // Feedback
+    const fb = document.getElementById("trivia-s-feedback");
+    fb.style.display = "block";
+    if (correcta) {
+        fb.style.background = "#eafaea";
+        fb.style.border = "1px solid #2ecc71";
+        fb.style.color = "#27ae60";
+        fb.innerHTML = `✅ <b>¡Correcto!</b> ${q.exp}`;
+    } else {
+        fb.style.background = "#fdecea";
+        fb.style.border = "1px solid #e74c3c";
+        fb.style.color = "#c0392b";
+        fb.innerHTML = `❌ <b>Incorrecto.</b> ${q.exp}`;
+    }
+
+    document.getElementById("trivia-s-correctas").textContent   = triviaSCorrectas;
+    document.getElementById("trivia-s-incorrectas").textContent = triviaSIncorrectas;
+    document.getElementById("trivia-s-btn-sig").style.display   = "inline-block";
+}
+
+function siguientePreguntaS() {
+    triviaSIdx++;
+    if (triviaSIdx < triviaSLista.length) {
+        mostrarPreguntaS();
+    } else {
+        mostrarResultadoS();
+    }
+}
+
+function mostrarResultadoS() {
+    document.getElementById("trivia-s-juego").style.display  = "none";
+    document.getElementById("trivia-s-final").style.display  = "block";
+    document.getElementById("trivia-s-progreso").style.width = "100%";
+
+    const pct = (triviaSCorrectas / triviaSLista.length) * 100;
+    let emoji, titulo, desc, color;
+
+    if (pct === 100) {
+        emoji = "🏆"; titulo = "¡Experto Dachshund!"; color = "#8B4513";
+        desc = "Perfecto. Sabés absolutamente todo sobre los salchichas. Tu perro estaría muy orgulloso de vos.";
+    } else if (pct >= 70) {
+        emoji = "🐕"; titulo = "¡Muy buen conocedor!"; color = "#5C4817";
+        desc = "Sabés bastante sobre la raza. Con un poco más de lectura llegás al nivel experto.";
+    } else if (pct >= 40) {
+        emoji = "🦴"; titulo = "Conocimiento básico"; color = "#D2691E";
+        desc = "Sabés lo esencial, pero hay mucho más por descubrir sobre estos perros increíbles.";
+    } else {
+        emoji = "😅"; titulo = "¡A estudiar se ha dicho!"; color = "#A0522D";
+        desc = "Parece que los salchichas te quedan a deber conocimiento. ¡Leé más sobre ellos y volvé a intentarlo!";
+    }
+
+    document.getElementById("trivia-s-final-emoji").textContent  = emoji;
+    document.getElementById("trivia-s-final-titulo").textContent = titulo;
+    document.getElementById("trivia-s-final-titulo").style.color = color;
+    document.getElementById("trivia-s-final-puntaje").textContent = `${triviaSCorrectas} correctas de ${triviaSLista.length}`;
+    document.getElementById("trivia-s-final-desc").textContent   = desc;
+}
+
+function reiniciarTriviaS() {
+    document.getElementById("trivia-s-final").style.display  = "none";
+    document.getElementById("trivia-s-juego").style.display  = "none";
+    document.getElementById("trivia-s-inicio").style.display = "block";
+    document.getElementById("trivia-s-progreso").style.width = "0%";
+}
+
+</script> 
+    
 
         <footer>
             <p>🐾 Ama a los perros salchichas tanto como ellos te aman a ti 🐾</p>
